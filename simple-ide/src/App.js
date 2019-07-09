@@ -13,7 +13,10 @@ function App () {
   return (
     <div className='App'>
       <Sidenav>
-        lol
+        <li>Variables</li>
+        <li>Cells</li>
+        <li>Items</li>
+        <li>Messages</li>
       </Sidenav>
     </div>
   )
