@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -38,8 +38,4 @@
 
 .sidenav {
   width: 50px;
-}
-
-.pos-top-left {
-  background-color: red;
 }

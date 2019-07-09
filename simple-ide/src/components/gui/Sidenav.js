@@ -14,7 +14,7 @@ const Sidenav = (props) => {
     <ul id={id} ref={ref} className='sidenav sidenav-fixed color-dark'>
       {props.children}
     </ul>
-    <a data-target={id} className='sidenav-trigger pos-top-left'>
+    <a data-target={id} className='sidenav-trigger'>
       <i className='material-icons'>menu</i>
     </a>
   </Fragment>
