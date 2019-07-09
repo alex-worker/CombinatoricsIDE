@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useRef } from 'react'
 import M from 'materialize-css'
 import idgen from './idgen'
+import 'materialize-css/dist/css/materialize.min.css'
 
 const Sidenav = (props) => {
   const id = props.id || `sidenav_${idgen()}`
