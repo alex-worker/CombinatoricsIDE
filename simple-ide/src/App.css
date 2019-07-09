@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+.color-dark {
+  background-color: blue;
+}
+
+.sidenav {
+  width: 50px;
+}
+
+.pos-top-left {
+  background-color: red;
+}
