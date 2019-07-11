@@ -13,10 +13,12 @@ function App () {
   return (
     <div className='App'>
       <Sidenav>
-        <li>Variables</li>
-        <li>Cells</li>
-        <li>Items</li>
-        <li>Messages</li>
+        <li><a href='#vars'><i className='material-icons'>list</i>Variables</a></li>
+        <li><a href='#cells'><i className='material-icons'>grid_on</i>Cells</a></li>
+        <li><a href='#items'><i className='material-icons'>work</i>Items</a></li>
+        <li><a href='#mess'><i className='material-icons'>message</i>Messages</a></li>
+        <li><div className='divider' /></li>
+        <li><a href='#mess'><i className='material-icons'>about</i>About</a></li>
       </Sidenav>
     </div>
   )
