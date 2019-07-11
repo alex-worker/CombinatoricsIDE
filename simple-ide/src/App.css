@@ -39,3 +39,13 @@
 .sidenav {
   width: 100px;
 }
+
+.main {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+.main {
+    padding-left: 0;
+  }
+}
