@@ -1,7 +1,10 @@
 import React from 'react'
 import './App.css'
 
+import Main from './Main'
+
 import Sidenav from './components/gui/Sidenav'
+// import Link from './components/gui/Link'
 
 // import M from 'materialize-css'
 // M.AutoInit()
@@ -18,8 +21,9 @@ function App () {
         <li><a href='#items'><i className='material-icons'>work</i>Items</a></li>
         <li><a href='#mess'><i className='material-icons'>message</i>Messages</a></li>
         <li><div className='divider' /></li>
-        <li><a href='#mess'><i className='material-icons'>about</i>About</a></li>
+        <li><a href='#about'><i className='material-icons'>info</i>About</a></li>
       </Sidenav>
+      <Main />
     </div>
   )
 }
