@@ -9,13 +9,13 @@ const Sidenav = (props) => {
 
   useEffect(() => {
     M.Sidenav.init(ref.current)
-  }, [ref])
+  }, [])
 
   return <Fragment>
-    <ul id={id} ref={ref} className='sidenav sidenav-fixed color-dark'>
+    <ul id={id} ref={ref} className='sidenav'>
       {props.children}
     </ul>
-    <a data-target={id} className='sidenav-trigger' href='#nav'>
+    <a data-target={id} className='sidenav-trigger show-on-large' href='#nav'>
       <i className='material-icons'>menu</i>
     </a>
   </Fragment>
