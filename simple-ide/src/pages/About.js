@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Column, Table, AutoSizer, List, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
+import React from 'react'
+import { AutoSizer, List, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import faker from 'faker'
 import 'react-virtualized/styles.css'
 
@@ -56,36 +56,30 @@ const _renderRow = ({ index, key, style, parent }) => {
   </CellMeasurer>
 }
 
-const _unmount = () => {
-  console.log('unmount')
-}
 
-const MyList = () => {
-  useEffect(() => {
-    _cache.clear()
-    console.log('clear')
-    return _unmount
-  })
+const MyList = (props) => {
+  const { width, height } = props
+  _cache.clearAll()
 
-  return <AutoSizer>
-    {({ height, width }) => {
-      return <List
-        width={width}
-        height={height}
-        rowHeight={_cache.rowHeight}
-        deferredMeasurementCache={_cache}
-        rowRenderer={_renderRow}
-        rowCount={list.length}
-        overscanRowCount={3} />
-    }}
-  </AutoSizer>
+  return <List
+    width={width}
+    height={height}
+    rowHeight={_cache.rowHeight}
+    deferredMeasurementCache={_cache}
+    rowRenderer={_renderRow}
+    rowCount={list.length}
+    overscanRowCount={3} />
 }
 
 const About = () => {
   return <div>
     <h1>'About'</h1>
     <div style={{ height: '400px' }}>
-      <MyList />
+      <AutoSizer>
+        {({ height, width }) => {
+          return <MyList width={width} height={height} />
+        }}
+      </AutoSizer>
     </div>
   </div>
 }
