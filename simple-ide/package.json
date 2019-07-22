@@ -6,7 +6,8 @@
     "materialize-css": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "react-router-dom": "^5.0.1",
+    "react-virtualized": "^9.21.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.1.9",
@@ -14,8 +15,9 @@
     "@storybook/addons": "^5.1.9",
     "@storybook/cli": "^5.1.9",
     "@storybook/react": "^5.1.9",
+    "faker": "^4.1.0",
     "react-scripts": "3.0.1",
-    "standard": "^13.0.2"
+    "standard": "^13.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
