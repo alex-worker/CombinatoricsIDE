@@ -20,24 +20,6 @@ const _cache = new CellMeasurerCache({
   minHeight: 25
 })
 
-// const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
-//   const content = list[rowIndex][dataKey]
-//   return <CellMeasurer
-//     cache={_cache}
-//     // columnIndex={0}
-//     key={dataKey}
-//     parent={parent}
-//     rowIndex={rowIndex}>
-//     <div
-//       // className={styles.tableColumn}
-//       style={{
-//         whiteSpace: 'normal'
-//       }}>
-//       {content}
-//     </div>
-//   </CellMeasurer>
-// }
-
 const _renderRow = ({ index, key, style, parent }) => {
   return <CellMeasurer
     key={key}
@@ -55,7 +37,6 @@ const _renderRow = ({ index, key, style, parent }) => {
     </div>
   </CellMeasurer>
 }
-
 
 const MyList = (props) => {
   const { width, height } = props
