@@ -2,8 +2,6 @@ import React from 'react'
 import faker from 'faker'
 
 import Sidenav from '../components/gui/Sidenav'
-import List from '../components/gui/List'
-import Table from '../components/gui/Table'
 
 import { storiesOf } from '@storybook/react'
 
@@ -24,18 +22,4 @@ storiesOf('GUI', module)
       <li>Item 2</li>
       <li>Item 3</li>
     </Sidenav>
-  )
-  .add('List', () =>
-    <div style={{ height: '100vh', border: '1px black solid' }}>
-      <List
-        list={list}
-      />
-    </div>
-  )
-  .add('Table', () =>
-    <div style={{ height: '100vh', border: '1px black solid' }}>
-      <Table
-        list={list}
-      />
-    </div>
   )
