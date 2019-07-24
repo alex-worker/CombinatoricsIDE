@@ -1,11 +1,9 @@
 import React from 'react'
-import { AutoSizer, List, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
+import { AutoSizer, List as VirtList, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import faker from 'faker'
 import 'react-virtualized/styles.css'
 
 var list = []
-
-// const rowHeight = 50
 
 for (let index = 0; index < 100; index++) {
   const fakeData = {
@@ -20,31 +18,31 @@ const _cache = new CellMeasurerCache({
   minHeight: 25
 })
 
-const _renderRow = ({ index, key, style, parent }) => {
+const _renderRow = (params) => {
+//   console.log( params )
+  const { index, key, style, parent } = params
   return <CellMeasurer
     key={key}
     cache={_cache}
     parent={parent}
     columnIndex={0}
     rowIndex={index}>
-    <tr style={{
+    <div style={{
       ...style
-      // height: 35,
-      // whiteSpace: 'nowrap'
     }}>
-      <td>{list[index].name}</td>
-      <td>{list[index].description}</td>
-    </tr>
+      <div>{list[index].name}</div>
+      <div>{list[index].description}</div>
+    </div>
   </CellMeasurer>
 }
 
 const MyList = (props) => {
-  const { width, height } = props
+  const { width, height, list } = props
   _cache.clearAll()
-
-  return <List
+  return <VirtList
     width={width}
     height={height}
+    // autoHeight
     rowHeight={_cache.rowHeight}
     deferredMeasurementCache={_cache}
     rowRenderer={_renderRow}
@@ -52,19 +50,17 @@ const MyList = (props) => {
     overscanRowCount={3} />
 }
 
-const About = () => {
-  return <div>
-    <h1>'About'</h1>
-    <table style={{ height: '400px' }}>
-      <tbody style={{ height: '400px' }}>
-        <AutoSizer>
-          {({ height, width }) => {
-            return <MyList width={width} height={height} />
-          }}
-        </AutoSizer>
-      </tbody>
-    </table>
-  </div>
+const List = (props) => {
+  const { list } = props
+  return <AutoSizer>
+    {({ width, height }) => {
+      return <MyList
+        list={list}
+        width={width}
+        height={height}
+      />
+    }}
+  </AutoSizer>
 }
 
-export default About
+export default List
