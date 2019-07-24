@@ -41,7 +41,6 @@ const _renderRow = ({ index, key, style, parent }) => {
 const MyList = (props) => {
   const { width, height } = props
   _cache.clearAll()
-
   return <List
     width={width}
     height={height}

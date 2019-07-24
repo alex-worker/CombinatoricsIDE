@@ -1,5 +1,5 @@
 import React from 'react'
-import { AutoSizer, List as VirtList, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
+import { AutoSizer, List as VirtualList, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import faker from 'faker'
 import 'react-virtualized/styles.css'
 
@@ -39,7 +39,7 @@ const _renderRow = (params) => {
 const MyList = (props) => {
   const { width, height, list } = props
   _cache.clearAll()
-  return <VirtList
+  return <VirtualList
     width={width}
     height={height}
     // autoHeight
