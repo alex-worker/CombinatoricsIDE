@@ -19,5 +19,5 @@
   .list-place {
     border: 1px dashed blue;
     height: 100vh;
-    width: 400px;
+    /* width: 400px; */
   }
