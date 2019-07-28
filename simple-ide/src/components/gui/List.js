@@ -1,7 +1,10 @@
 import React from 'react'
-import { AutoSizer, List as VirtualList, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import faker from 'faker'
-import 'react-virtualized/styles.css'
+
+import { VariableSizeList } from 'react-window'
+import AutoSizer from 'react-virtualized-auto-sizer'
+import getSize from './getsize'
+import './gui.css'
 
 var list = []
 
@@ -13,54 +16,46 @@ for (let index = 0; index < 100; index++) {
   list.push(fakeData)
 }
 
-const _cache = new CellMeasurerCache({
-  fixedWidth: true,
-  minHeight: 25
-})
-
-const _renderRow = (params) => {
-//   console.log( params )
-  const { index, key, style, parent } = params
-  return <CellMeasurer
-    key={key}
-    cache={_cache}
-    parent={parent}
-    columnIndex={0}
-    rowIndex={index}>
-    <div style={{
-      ...style
-    }}>
-      <div>{list[index].name}</div>
-      <div>{list[index].description}</div>
-    </div>
-  </CellMeasurer>
+const Row = ({ index, style }) => {
+  console.log( list[index].description )
+  return <div
+    style={{
+      // ...style
+    }}
+    className='list-item'>
+    { list[index].description }
+  </div>
 }
 
-const MyList = (props) => {
-  const { width, height, list } = props
-  _cache.clearAll()
-  return <VirtualList
-    width={width}
-    height={height}
-    // autoHeight
-    rowHeight={_cache.rowHeight}
-    deferredMeasurementCache={_cache}
-    rowRenderer={_renderRow}
-    rowCount={list.length}
-    overscanRowCount={3} />
+const getItemSize = (index) => {
+  const text = list[index].description
+  const size = getSize({
+    text,
+    // attributes: {
+    // width: '100hv'
+    // },
+    className: 'list-item'
+  })
+  let { height } = size
+  height += 5
+  return height
 }
 
 const List = (props) => {
-  const { list } = props
-  return <AutoSizer>
-    {({ width, height }) => {
-      return <MyList
-        list={list}
-        width={width}
+  // const { list } = props
+  return <div className='list-place'><AutoSizer>
+    {({ height, width }) => (
+      <VariableSizeList
         height={height}
-      />
-    }}
-  </AutoSizer>
+        // width={width}
+        itemCount={list.length}
+        itemSize={getItemSize}
+        estimatedItemSize={30}
+      >
+        {Row}
+      </VariableSizeList>
+    )}
+  </AutoSizer></div>
 }
 
 export default List

@@ -1,0 +1,23 @@
+.list-item {
+  border: 1px dotted red;
+  padding: 6px;
+  margin: 6px;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  /* width: 100px; */
+    /* white-space: pre-line;
+    grid-area: message;
+    display: inline-block;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    border-radius: 6px;
+    /* line-height: 1.375; */
+    /* font-weight: normal; */
+    /* word-break: normal; */
+  }
+  
+  .list-place {
+    border: 1px dashed blue;
+    height: 100vh;
+    width: 400px;
+  }
