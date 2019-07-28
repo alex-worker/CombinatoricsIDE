@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { VariableSizeList } from 'react-window'
 import AutoSizer from 'react-virtualized-auto-sizer'
-import getSize from './getsize'
+import getHeight from './getheight'
 import './gui.css'
 
 const Row = ({ row }) => {
@@ -11,28 +11,25 @@ const Row = ({ row }) => {
   </div>
 }
 
-const getItemSize = (width, text) => {
-  console.log( width )
-  const size = getSize({
+const getItemHeight = (width, text) => {
+  const height = getHeight({
     text,
     attributes: {
       width: width + 'px'
     },
     className: 'list-item'
   })
-  const { height } = size
   return height
 }
 
 const List = ({ list }) => {
   return <div className='list-place'><AutoSizer>
     {({ height, width }) => {
-      // console.log( width )
       return <VariableSizeList
         height={height}
         width={width}
         itemCount={list.length}
-        itemSize={index => getItemSize(width, list[index].description)}
+        itemSize={index => getItemHeight(width, list[index].description)}
         estimatedItemSize={30}
       >
         {({ index, style }) => (

@@ -52,19 +52,13 @@ function destroyElement (element) {
  * @param {getSizeConfig} config - The configuration object for getSize.
  * @returns {SizeObject}
  */
-export default function getSize ({
+export default function getHeight ({
   text = '',
   attributes = {},
   className = ''
 }) {
   const element = createDummyElement({ text, attributes, className })
-
-  const size = {
-    width: element.offsetWidth,
-    height: element.offsetHeight
-  }
-
+  const height = element.offsetHeight
   destroyElement(element)
-
-  return size
+  return height
 }
