@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import faker from 'faker'
 
 import { VariableSizeList } from 'react-window'
@@ -6,55 +6,64 @@ import AutoSizer from 'react-virtualized-auto-sizer'
 import getSize from './getsize'
 import './gui.css'
 
-var list = []
+// var list = []
+var heightCache = []
 
-for (let index = 0; index < 100; index++) {
-  const fakeData = {
-    name: faker.name.findName(),
-    description: faker.lorem.paragraph()
-  }
-  list.push(fakeData)
-}
+// for (let index = 0; index < 100; index++) {
+//   const fakeData = {
+//     name: faker.name.findName(),
+//     description: faker.lorem.paragraph()
+//   }
+//   list.push(fakeData)
+// }
 
-const Row = ({ index, style }) => {
-  console.log( list[index].description )
-  return <div
-    style={{
-      // ...style
-    }}
-    className='list-item'>
-    { list[index].description }
+const Row = ({ row }) => {
+  return <div className='list-item'>
+    { row.description }
   </div>
 }
 
-const getItemSize = (index) => {
-  const text = list[index].description
+const getItemSize = (text) => {
+  // const text = list[index].description
   const size = getSize({
     text,
-    // attributes: {
-    // width: '100hv'
-    // },
+    attributes: {
+      width: '400px'
+    },
     className: 'list-item'
   })
   let { height } = size
-  height += 5
+  // height += 5
   return height
 }
 
-const List = (props) => {
-  // const { list } = props
+const _calcHeights = (list) => {
+  heightCache = list.map((item) => {
+    return getItemSize(item.description)
+  })
+}
+
+const List = ({ list }) => {
+  useEffect(() => {
+    _calcHeights(list)
+  })
   return <div className='list-place'><AutoSizer>
-    {({ height, width }) => (
-      <VariableSizeList
+    {({ height, width }) => {
+      return <VariableSizeList
         height={height}
-        // width={width}
+        width={width}
         itemCount={list.length}
-        itemSize={getItemSize}
+        itemSize={index => heightCache[index]}
+        // itemSize={getItemSize}
         estimatedItemSize={30}
       >
-        {Row}
+        {({ index, style }) => (
+          <div style={style}>
+            <Row row={list[index]} />
+          </div>
+        )}
       </VariableSizeList>
-    )}
+    }}
   </AutoSizer></div>
 }
 

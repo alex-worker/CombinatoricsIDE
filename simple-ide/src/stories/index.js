@@ -25,5 +25,5 @@ storiesOf('GUI', module)
     </Sidenav>
   )
   .add('List', () =>
-    <List />
+    <List list={list} />
   )
