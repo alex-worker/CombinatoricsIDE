@@ -16,7 +16,7 @@ const getItemSize = (width, text) => {
   const size = getSize({
     text,
     attributes: {
-      width: width + '.px'
+      width: width + 'px'
     },
     className: 'list-item'
   })
