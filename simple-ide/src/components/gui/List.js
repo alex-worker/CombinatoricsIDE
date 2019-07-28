@@ -12,7 +12,7 @@ const Row = ({ row }) => {
 }
 
 const getItemSize = (width, text) => {
-  console.log(width)
+  console.log( width )
   const size = getSize({
     text,
     attributes: {
@@ -20,13 +20,14 @@ const getItemSize = (width, text) => {
     },
     className: 'list-item'
   })
-  let { height } = size
+  const { height } = size
   return height
 }
 
 const List = ({ list }) => {
   return <div className='list-place'><AutoSizer>
     {({ height, width }) => {
+      // console.log( width )
       return <VariableSizeList
         height={height}
         width={width}

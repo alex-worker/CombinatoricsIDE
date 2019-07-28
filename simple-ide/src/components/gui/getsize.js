@@ -16,8 +16,6 @@
  * @property {String} className - A list of classes to be added to the element.
  */
 
-const cache = {}
-
 /**
  * Create a dummy HTML element with the provided configuration.
  * @param {getSizeConfig} config - The configuration object for creating the element.
@@ -59,12 +57,6 @@ export default function getSize ({
   attributes = {},
   className = ''
 }) {
-  const cacheKey = JSON.stringify({ text, attributes, className })
-
-  if (cache[cacheKey]) {
-    return cache[cacheKey]
-  }
-
   const element = createDummyElement({ text, attributes, className })
 
   const size = {
@@ -73,8 +65,6 @@ export default function getSize ({
   }
 
   destroyElement(element)
-
-  cache[cacheKey] = size
 
   return size
 }
