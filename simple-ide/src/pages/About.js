@@ -1,11 +1,9 @@
 import React from 'react'
-import { AutoSizer, List, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
+import { AutoSizer, List, CellMeasurerCache, CellMeasurer, WindowScroller } from 'react-virtualized'
 import faker from 'faker'
 import 'react-virtualized/styles.css'
 
 var list = []
-
-// const rowHeight = 50
 
 for (let index = 0; index < 100; index++) {
   const fakeData = {
@@ -38,29 +36,41 @@ const _renderRow = ({ index, key, style, parent }) => {
   </CellMeasurer>
 }
 
-const MyList = (props) => {
-  const { width, height } = props
-  _cache.clearAll()
-  return <List
-    width={width}
-    height={height}
-    rowHeight={_cache.rowHeight}
-    deferredMeasurementCache={_cache}
-    rowRenderer={_renderRow}
-    rowCount={list.length}
-    overscanRowCount={3} />
-}
+// const MyList = (props) => {
+//   const { width, height } = props
+//   _cache.clearAll()
+//   return <List
+//     width={width}
+//     height={height}
+//     rowHeight={_cache.rowHeight}
+//     deferredMeasurementCache={_cache}
+//     rowRenderer={_renderRow}
+//     rowCount={list.length}
+//     overscanRowCount={3} />
+// }
 
 const About = () => {
   return <div>
     <h1>'About'</h1>
     <table style={{ height: '400px' }}>
       <tbody style={{ height: '400px' }}>
-        <AutoSizer>
-          {({ height, width }) => {
-            return <MyList width={width} height={height} />
+        <WindowScroller >
+          {({ height, isScrolling, onChildScroll, scrollTop, width }) => {
+            _cache.clearAll()
+            return <List
+              autoHeight
+              height={height}
+              isScrolling={isScrolling}
+              onScroll={onChildScroll}
+              rowCount={list.length}
+              rowHeight={_cache.rowHeight}
+              deferredMeasurementCache={_cache}
+              rowRenderer={_renderRow}
+              scrollTop={scrollTop}
+              width={width}
+            />
           }}
-        </AutoSizer>
+        </WindowScroller>
       </tbody>
     </table>
   </div>
