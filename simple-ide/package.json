@@ -10,11 +10,11 @@
     "react-virtualized": "^9.21.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.1.9",
-    "@storybook/addon-links": "^5.1.9",
-    "@storybook/addons": "^5.1.9",
-    "@storybook/cli": "^5.1.9",
-    "@storybook/react": "^5.1.9",
+    "@storybook/addon-actions": "^5.1.10",
+    "@storybook/addon-links": "^5.1.10",
+    "@storybook/addons": "^5.1.10",
+    "@storybook/cli": "^5.1.10",
+    "@storybook/react": "^5.1.10",
     "faker": "^4.1.0",
     "react-scripts": "3.0.1",
     "standard": "^13.1.0"
