@@ -1,5 +1,5 @@
 import React from 'react'
-import { AutoSizer, List, CellMeasurerCache, CellMeasurer, WindowScroller } from 'react-virtualized'
+import { AutoSizer, List, Table, Column, CellMeasurerCache, CellMeasurer, WindowScroller } from 'react-virtualized'
 import faker from 'faker'
 import 'react-virtualized/styles.css'
 
@@ -49,30 +49,49 @@ const _renderRow = ({ index, key, style, parent }) => {
 //     overscanRowCount={3} />
 // }
 
+const _rowGetter = ({ index }) => {
+  return list[index]
+}
+
 const About = () => {
   return <div>
     <h1>'About'</h1>
-    <table style={{ height: '400px' }}>
-      <tbody style={{ height: '400px' }}>
-        <WindowScroller >
-          {({ height, isScrolling, onChildScroll, scrollTop, width }) => {
-            _cache.clearAll()
-            return <List
-              autoHeight
-              height={height}
-              isScrolling={isScrolling}
-              onScroll={onChildScroll}
-              rowCount={list.length}
-              rowHeight={_cache.rowHeight}
-              deferredMeasurementCache={_cache}
-              rowRenderer={_renderRow}
-              scrollTop={scrollTop}
+      <WindowScroller >
+        {({ height, isScrolling, onChildScroll, scrollTop, width }) => {
+          _cache.clearAll()
+            return <Table
               width={width}
-            />
+              height={height}
+              // headerHeight={20}
+              rowHeight={30}
+              rowCount={list.length}
+              rowGetter={({ index }) => list[index]}
+              // rowGetter={_rowGetter}
+              // autoHeight
+              // height={height}
+              // isScrolling={isScrolling}
+              // onScroll={onChildScroll}
+              // rowCount={list.length}
+              // rowHeight={_cache.rowHeight}
+              // // deferredMeasurementCache={_cache}
+              // rowRenderer={_renderRow}
+              // scrollTop={scrollTop}
+              // width={width}
+            >
+              <Column
+                label='Name'
+                dataKey='name'
+                width={100}
+              />
+              <Column
+                // width={width - 100}
+                flexGrow={1}
+                label='Description'
+                dataKey='description'
+              />
+            </Table>
           }}
         </WindowScroller>
-      </tbody>
-    </table>
   </div>
 }
 
