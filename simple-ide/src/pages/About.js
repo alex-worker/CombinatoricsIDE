@@ -53,45 +53,34 @@ const _rowGetter = ({ index }) => {
   return list[index]
 }
 
+const MyTablePlace = () => (
+  <div style={{
+    border: '1px dotted red',
+    height: '100vh'
+  }}>
+    <AutoSizer>
+      {({ width, height }) => (
+        <Table
+          width={width}
+          height={height}
+          rowHeight={50}
+          rowGetter={_rowGetter}
+          rowCount={list.length}
+        >
+          <Column
+            dataKey='name'
+            // width={90}
+          />
+        </Table>
+      )}
+    </AutoSizer>
+  </div>
+)
+
 const About = () => {
   return <div>
     <h1>'About'</h1>
-      <WindowScroller >
-        {({ height, isScrolling, onChildScroll, scrollTop, width }) => {
-          _cache.clearAll()
-            return <Table
-              width={width}
-              height={height}
-              // headerHeight={20}
-              rowHeight={30}
-              rowCount={list.length}
-              rowGetter={({ index }) => list[index]}
-              // rowGetter={_rowGetter}
-              // autoHeight
-              // height={height}
-              // isScrolling={isScrolling}
-              // onScroll={onChildScroll}
-              // rowCount={list.length}
-              // rowHeight={_cache.rowHeight}
-              // // deferredMeasurementCache={_cache}
-              // rowRenderer={_renderRow}
-              // scrollTop={scrollTop}
-              // width={width}
-            >
-              <Column
-                label='Name'
-                dataKey='name'
-                width={100}
-              />
-              <Column
-                // width={width - 100}
-                flexGrow={1}
-                label='Description'
-                dataKey='description'
-              />
-            </Table>
-          }}
-        </WindowScroller>
+    <MyTablePlace />
   </div>
 }
 
