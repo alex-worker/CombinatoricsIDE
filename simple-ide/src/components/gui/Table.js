@@ -3,11 +3,11 @@ import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import './gui.css'
 
-const _full_cell = ({ row }) => {
-  return <div className = 'list-item'>
-    {row.description}
-  </div>
-}
+// // const _fullCell = ({ row }) => {
+// //   return <div className='list-item'>
+// //     {row.description}
+// //   </div>
+// }
 
 const _columns = [
   {
