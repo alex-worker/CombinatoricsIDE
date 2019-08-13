@@ -16,31 +16,31 @@ for (let index = 0; index < 1000; index++) {
   list.push(fakeData)
 }
 
-const columns = [
-  {
-    Header: 'Name',
-    accessor: 'name',
-    className: 'list-item',
-    minWidth: '30%',
-    style: { 'white-space': 'unset' }
-  },
-  {
-    Header: 'Description',
-    accessor: 'description',
-    className: 'list-item',
-    minWidth: '70%',
-    style: { 'white-space': 'unset' }
-  }
-]
+// const columns = [
+//   {
+//     Header: 'Name',
+//     accessor: 'name',
+//     className: 'list-item',
+//     // minWidth: '30%',
+//     // style: { 'white-space': 'unset' }
+//   },
+//   {
+//     Header: 'Description',
+//     accessor: 'description',
+//     className: 'list-item',
+//     minWidth: '70%',
+//     style: { 'white-space': 'unset' }
+//   }
+// ]
 
 storiesOf('GUI', module)
-  .add('Sidenav', () =>
-    <Sidenav>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </Sidenav>
-  )
-  .add('Table', () =>
-    <Table data={list} columns={columns} />
-  )
+  // .add('Sidenav', () =>
+  //   <Sidenav>
+  //     <li>Item 1</li>
+  //     <li>Item 2</li>
+  //     <li>Item 3</li>
+  //   </Sidenav>
+  // )
+  // .add('Table', () =>
+  //   <Table data={list} />
+  // )

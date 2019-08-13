@@ -1,5 +1,4 @@
 import React from 'react'
-import Table from '../components/gui/Table'
 
 const vars = [
   { name: 'var_act', default: '0', comment: 'Current action' },
@@ -33,7 +32,6 @@ const columns = [
 const Variables = () => {
   return <div>
     <h1>'Variables'</h1>
-    <Table data={vars} columns={columns} />
   </div>
 }
 
