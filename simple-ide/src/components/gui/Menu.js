@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+
 import { makeStyles } from '@material-ui/core/styles'
 
 import AppBar from '@material-ui/core/AppBar'
@@ -29,8 +31,19 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+const makePages = (items) => (
+  <Switch>
+    {
+      items.map((item, index) => (
+        item.name === 'Divider' ? null : <Route
+          exact path={item.link} component={item.component} key={index} />
+      ))
+    }
+  </Switch>
+)
+
 const makeItem = (item, index) => (
-  item.name === 'Divider' ? <Divider /> : <ListItem button key={index}>
+  item.name === 'Divider' ? <Divider key={index} /> : <ListItem button component={Link} key={index} to={item.link}>
     <ListItemIcon>
       <Icon>{item.icon}</Icon>
     </ListItemIcon>
@@ -54,10 +67,11 @@ const Menu = ({ header = 'undefined', items }) => {
   }
 
   const closeDrawer = () => {
+    console.log('close')
     setDrawerOpen(false)
   }
 
-  return <div className={classes.root}>
+  return <div className={classes.root}><Router>
     <AppBar position='static'>
       <Toolbar>
         <IconButton color='inherit' className={classes.menuButton} onClick={openDrawer} >
@@ -72,7 +86,8 @@ const Menu = ({ header = 'undefined', items }) => {
     <Drawer open={isDrawerOpen} onClose={closeDrawer} >
       {makeList(items)}
     </Drawer>
-  </div>
+    {makePages(items)}
+  </Router></div>
 }
 
 export default Menu
