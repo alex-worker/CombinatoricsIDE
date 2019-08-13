@@ -31,12 +31,9 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const onClickDrawer = (e) => {
-  console.log('onClick', e.target.key)
-}
-
-const makePages = (items) => (
+const makePages = (items, defaultIndexPage = 0) => (
   <Switch>
+    <Route exact path='/' component={items[defaultIndexPage].component} key={0} />
     {
       items.map((item, index) => (
         item.name === 'Divider' ? null : <Route
@@ -55,7 +52,7 @@ const makeItem = (item, index) => (
   </ListItem>
 )
 
-const Menu = ({ header = 'undefined', items }) => {
+const Menu = ({ header = 'undefined', items, defaultIndexPage }) => {
   const classes = useStyles()
 
   const [isDrawerOpen, setDrawerOpen] = React.useState(false)
@@ -89,7 +86,7 @@ const Menu = ({ header = 'undefined', items }) => {
     <Drawer open={isDrawerOpen} onClose={closeDrawer} >
       {makeList(items)}
     </Drawer>
-    {makePages(items)}
+    {makePages(items, defaultIndexPage)}
   </Router></div>
 }
 

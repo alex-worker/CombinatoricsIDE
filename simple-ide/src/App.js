@@ -4,8 +4,6 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/styles'
 import theme from './theme'
 
-// import { NavLink } from 'react-router-dom'
-
 import About from './pages/About'
 import Cells from './pages/Cells'
 import Items from './pages/Items'
@@ -23,23 +21,13 @@ const pageList = [
   { name: 'About', icon: 'info', link: '/about', component: About }
 ]
 
-// const Pages = () => {
-//   return <Switch>
-//     <Route exact path='/' component={About} />
-//     <Route exact path='/about' component={About} />
-//     <Route exact path='/cells' component={Cells} />
-//     <Route exact path='/items' component={Items} />
-//     <Route exact path='/mess' component={Messages} />
-//     <Route exact path='/vars' component={Variables} />
-//   </Switch>
-// }
-
 function App () {
   const [headerName, setHeaderName] = React.useState('Simple IDE')
+
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
-      <Menu header={headerName} items={pageList} />
+      <Menu header={headerName} items={pageList} defaultIndexPage={5} />
     </ThemeProvider>
   )
 }
