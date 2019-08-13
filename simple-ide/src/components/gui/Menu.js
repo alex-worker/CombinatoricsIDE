@@ -31,6 +31,10 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+const onClickDrawer = (e) => {
+  console.log('onClick', e.target.key)
+}
+
 const makePages = (items) => (
   <Switch>
     {
@@ -43,7 +47,7 @@ const makePages = (items) => (
 )
 
 const makeItem = (item, index) => (
-  item.name === 'Divider' ? <Divider key={index} /> : <ListItem button component={Link} key={index} to={item.link}>
+  item.name === 'Divider' ? <Divider key={index} /> : <ListItem button key={index} component={Link} to={item.link} >
     <ListItemIcon>
       <Icon>{item.icon}</Icon>
     </ListItemIcon>
@@ -51,23 +55,22 @@ const makeItem = (item, index) => (
   </ListItem>
 )
 
-const makeList = (items) => (
-  <List>
-    { items.map(makeItem) }
-  </List>
-)
-
 const Menu = ({ header = 'undefined', items }) => {
   const classes = useStyles()
 
   const [isDrawerOpen, setDrawerOpen] = React.useState(false)
+
+  const makeList = (items) => (
+    <List onClick={closeDrawer} >
+      { items.map(makeItem) }
+    </List>
+  )
 
   const openDrawer = () => {
     setDrawerOpen(true)
   }
 
   const closeDrawer = () => {
-    console.log('close')
     setDrawerOpen(false)
   }
 
