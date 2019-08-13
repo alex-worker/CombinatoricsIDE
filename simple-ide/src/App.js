@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/styles'
 import theme from './theme'
 
-import Container from '@material-ui/core/Container'
+// import Container from '@material-ui/core/Container'
 
 import About from './pages/About'
 import Cells from './pages/Cells'
@@ -15,6 +15,15 @@ import Messages from './pages/Messages'
 import Variables from './pages/Variables'
 
 import Menu from './components/gui/Menu'
+
+const pageList = [
+  { name: 'Variables', icon: 'list', link: 'Variables' },
+  { name: 'Cells', icon: 'grid_on', link: 'Cells' },
+  { name: 'Items', icon: 'work', link: 'Items' },
+  { name: 'Messages', icon: 'message', link: 'Messages' },
+  { name: 'Divider' },
+  { name: 'About', icon: 'info', link: 'About' }
+]
 
 const Pages = () => {
   return <Switch>
@@ -28,10 +37,11 @@ const Pages = () => {
 }
 
 function App () {
+  const [headerName, setHeaderName] = React.useState('Simple IDE')
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
-      <Menu />
+      <Menu header={headerName} items={pageList} />
       <Router>
         <Pages />
       </Router>

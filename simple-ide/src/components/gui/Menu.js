@@ -8,6 +8,12 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import Icon from '@material-ui/core/Icon'
+import Divider from '@material-ui/core/Divider'
 
 import Drawer from './Drawer'
 
@@ -23,7 +29,22 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Menu = ({ header = 'undefined' }) => {
+const makeItem = (item, index) => (
+  item.name === 'Divider' ? <Divider /> : <ListItem button key={index}>
+    <ListItemIcon>
+      <Icon>{item.icon}</Icon>
+    </ListItemIcon>
+    <ListItemText primary={item.name} />
+  </ListItem>
+)
+
+const makeList = (items) => (
+  <List>
+    { items.map(makeItem) }
+  </List>
+)
+
+const Menu = ({ header = 'undefined', items }) => {
   const classes = useStyles()
 
   const [isDrawerOpen, setDrawerOpen] = React.useState(false)
@@ -48,7 +69,9 @@ const Menu = ({ header = 'undefined' }) => {
         <Button color='inherit' >Login</Button>
       </Toolbar>
     </AppBar>
-    <Drawer open={isDrawerOpen} onClose={closeDrawer} />
+    <Drawer open={isDrawerOpen} onClose={closeDrawer} >
+      {makeList(items)}
+    </Drawer>
   </div>
 }
 
