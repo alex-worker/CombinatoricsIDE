@@ -31,8 +31,9 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const makePages = (items, defaultIndexPage = 0) => (
-  <Switch>
+const makePages = (items, defaultIndexPage = 0) => {
+  console.log('makePages')
+  return <Switch>
     <Route exact path='/' component={items[defaultIndexPage].component} key={0} />
     {
       items.map((item, index) => (
@@ -41,7 +42,7 @@ const makePages = (items, defaultIndexPage = 0) => (
       ))
     }
   </Switch>
-)
+}
 
 const makeItem = (item, index) => (
   item.name === 'Divider' ? <Divider key={index} /> : <ListItem button key={index} component={Link} to={item.link} >
@@ -52,16 +53,18 @@ const makeItem = (item, index) => (
   </ListItem>
 )
 
+const makeList = (items, onClick) => {
+  console.log('makeList')
+  return <List onClick={onClick} >
+    { items.map(makeItem) }
+  </List>
+}
+
 const Menu = ({ header = 'undefined', items, defaultIndexPage }) => {
+  console.log('Menu')
   const classes = useStyles()
 
   const [isDrawerOpen, setDrawerOpen] = React.useState(false)
-
-  const makeList = (items) => (
-    <List onClick={closeDrawer} >
-      { items.map(makeItem) }
-    </List>
-  )
 
   const openDrawer = () => {
     setDrawerOpen(true)
@@ -70,6 +73,10 @@ const Menu = ({ header = 'undefined', items, defaultIndexPage }) => {
   const closeDrawer = () => {
     setDrawerOpen(false)
   }
+
+  // экономим на спичках
+  const menuItemList = React.useMemo(() => makeList(items, closeDrawer), [items])
+  const pageList = React.useMemo(() => makePages(items, defaultIndexPage), [items, defaultIndexPage])
 
   return <div className={classes.root}><Router>
     <AppBar position='static'>
@@ -84,9 +91,9 @@ const Menu = ({ header = 'undefined', items, defaultIndexPage }) => {
       </Toolbar>
     </AppBar>
     <Drawer open={isDrawerOpen} onClose={closeDrawer} >
-      {makeList(items)}
+      {menuItemList}
     </Drawer>
-    {makePages(items, defaultIndexPage)}
+    {pageList}
   </Router></div>
 }
 
