@@ -4,12 +4,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
 
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
@@ -17,16 +11,11 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Icon from '@material-ui/core/Icon'
 import Divider from '@material-ui/core/Divider'
 
+import AppBar from './AppBar'
 import Drawer from './Drawer'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  header: {
     flexGrow: 1
   }
 }))
@@ -60,10 +49,9 @@ const makeList = (items, onClick) => {
   </List>
 }
 
+
 const Menu = ({ header = 'undefined', items, defaultIndexPage }) => {
   console.log('Menu')
-  const classes = useStyles()
-
   const [isDrawerOpen, setDrawerOpen] = React.useState(false)
 
   const openDrawer = () => {
@@ -74,22 +62,14 @@ const Menu = ({ header = 'undefined', items, defaultIndexPage }) => {
     setDrawerOpen(false)
   }
 
+  const classes = useStyles()
+
   // экономим на спичках
   const menuItemList = React.useMemo(() => makeList(items, closeDrawer), [items])
   const pageList = React.useMemo(() => makePages(items, defaultIndexPage), [items, defaultIndexPage])
 
   return <div className={classes.root}><Router>
-    <AppBar position='static'>
-      <Toolbar>
-        <IconButton color='inherit' className={classes.menuButton} onClick={openDrawer} >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant='h6' className={classes.header} >
-          {header}
-        </Typography>
-        <Button color='inherit' >Login</Button>
-      </Toolbar>
-    </AppBar>
+    <AppBar header={header} onClick={openDrawer} />
     <Drawer open={isDrawerOpen} onClose={closeDrawer} >
       {menuItemList}
     </Drawer>
