@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const MyAppBar = ({ header, onClick }) => {
+  console.log('MyAppBar')
   const classes = useStyles()
   return <AppBar position='static'>
     <Toolbar>
@@ -33,4 +34,12 @@ const MyAppBar = ({ header, onClick }) => {
   </AppBar>
 }
 
-export default MyAppBar
+// ha-ha, custom areEqual
+// https://dmitripavlutin.com/use-react-memo-wisely/
+function areEqual (prevProps, nextProps) {
+  if (prevProps.header === nextProps.header) return true
+  return false
+}
+
+// export default React.memo(MyAppBar)
+export default React.memo(MyAppBar, areEqual)

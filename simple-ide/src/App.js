@@ -24,10 +24,14 @@ const pageList = [
 function App () {
   const [headerName, setHeaderName] = React.useState('Simple IDE')
 
+  // const changePage = () => {
+  //   console.log('changePage!!')
+  // }
+
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
-      <Menu header={headerName} items={pageList} defaultIndexPage={5} />
+      <Menu header={headerName} items={pageList} /*onChangePage={changePage}*/ defaultIndexPage={5} />
     </ThemeProvider>
   )
 }
