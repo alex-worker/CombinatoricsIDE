@@ -1,15 +1,8 @@
 import React from 'react'
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
-
-// import List from '@material-ui/core/List'
-// import ListItem from '@material-ui/core/ListItem'
-// import ListItemIcon from '@material-ui/core/ListItemIcon'
-// import ListItemText from '@material-ui/core/ListItemText'
-// import Icon from '@material-ui/core/Icon'
-// import Divider from '@material-ui/core/Divider'
 
 import AppBar from './AppBar'
 import Drawer from './Drawer'
@@ -49,12 +42,12 @@ const Menu = ({ header = 'undefined', onChangePage, items, defaultIndexPage }) =
     closeDrawer()
     // onChangePage()
   }
-  
-  const classes = useStyles()
 
   // экономим на спичках
   // const menuItemList = React.useMemo(() => makeList(items, closeDrawer), [items])
   // const pageList = React.useMemo(() => makePages(items, defaultIndexPage), [items, defaultIndexPage])
+
+  const classes = useStyles()
 
   return <div className={classes.root}><Router>
     <AppBar header={header} onClick={openDrawer} />

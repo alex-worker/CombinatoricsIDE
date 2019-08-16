@@ -31,7 +31,7 @@ function App () {
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
-      <Menu header={headerName} items={pageList} /*onChangePage={changePage}*/ defaultIndexPage={5} />
+      <Menu header={headerName} items={pageList} defaultIndexPage={5} />
     </ThemeProvider>
   )
 }
