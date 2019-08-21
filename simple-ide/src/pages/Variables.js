@@ -35,7 +35,16 @@ const columns = [
 ]
 
 const MyRow = () => {
-  return <div>'Row'</div>
+  return (
+    <div
+      styles={{
+        width: '100%',
+        border: '1px solid red'
+      }}
+    >
+      'Row'
+    </div>
+  )
 }
 
 const MyInfiniteLoader = () => {
@@ -51,6 +60,10 @@ const MyInfiniteLoader = () => {
             onItemsRendered={onItemsRendered}
             ref={ref}
             width={300}
+            styles={{
+              width: '100%',
+              border: '1px solid red'
+            }}
           >
             {MyRow}
           </List>
@@ -62,9 +75,14 @@ const MyInfiniteLoader = () => {
 
 const Variables = () => {
   return (
-    <div>
+    <div
+      styles={{
+        width: '100%',
+        backgroundColor: 'blue',
+        border: '1px solid red'
+      }}
+    >
       <h1>'Variables'</h1>
-      <MyInfiniteLoader />
     </div>
   )
 }

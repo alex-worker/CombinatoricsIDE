@@ -29,7 +29,7 @@ function App () {
   // }
 
   return (
-    <ThemeProvider theme={theme} >
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Menu header={headerName} items={pageList} defaultIndexPage={5} />
     </ThemeProvider>
