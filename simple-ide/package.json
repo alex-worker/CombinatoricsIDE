@@ -4,20 +4,20 @@
   "private": true,
   "dependencies": {
     "materialize-css": "^1.0.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-virtualized": "^9.21.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.1.10",
-    "@storybook/addon-links": "^5.1.10",
-    "@storybook/addons": "^5.1.10",
-    "@storybook/cli": "^5.1.10",
-    "@storybook/react": "^5.1.10",
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-links": "^5.1.11",
+    "@storybook/addons": "^5.1.11",
+    "@storybook/cli": "^5.1.11",
+    "@storybook/react": "^5.1.11",
     "faker": "^4.1.0",
-    "react-scripts": "3.0.1",
-    "standard": "^13.1.0"
+    "react-scripts": "^3.1.1",
+    "standard": "^14.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

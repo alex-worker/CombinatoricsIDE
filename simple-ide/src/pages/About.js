@@ -13,28 +13,28 @@ for (let index = 0; index < 100; index++) {
   list.push(fakeData)
 }
 
-const _cache = new CellMeasurerCache({
-  fixedWidth: true,
-  minHeight: 25
-})
+// const _cache = new CellMeasurerCache({
+//   fixedWidth: true,
+//   minHeight: 25
+// })
 
-const _renderRow = ({ index, key, style, parent }) => {
-  return <CellMeasurer
-    key={key}
-    cache={_cache}
-    parent={parent}
-    columnIndex={0}
-    rowIndex={index}>
-    <tr style={{
-      ...style
-      // height: 35,
-      // whiteSpace: 'nowrap'
-    }}>
-      <td>{list[index].name}</td>
-      <td>{list[index].description}</td>
-    </tr>
-  </CellMeasurer>
-}
+// const _renderRow = ({ index, key, style, parent }) => {
+//   return <CellMeasurer
+//     key={key}
+//     cache={_cache}
+//     parent={parent}
+//     columnIndex={0}
+//     rowIndex={index}>
+//     <tr style={{
+//       ...style
+//       // height: 35,
+//       // whiteSpace: 'nowrap'
+//     }}>
+//       <td>{list[index].name}</td>
+//       <td>{list[index].description}</td>
+//     </tr>
+//   </CellMeasurer>
+// }
 
 // const MyList = (props) => {
 //   const { width, height } = props
@@ -68,7 +68,7 @@ const MyTablePlace = () => (
           rowCount={list.length}
         >
           <Column
-            dataKey='name'
+            dataKey='description'
             // width={90}
           />
         </Table>
