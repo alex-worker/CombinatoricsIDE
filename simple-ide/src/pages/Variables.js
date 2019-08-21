@@ -38,29 +38,35 @@ const MyRow = () => {
   return <div>'Row'</div>
 }
 
-const MyInfiniteList = () => {
-  return <InfiniteLoader>
-    {({ onItemsRendered, ref }) => {
-      return <List
-        className='List'
-        height={150}
-        itemCount={1000}
-        itemSize={30}
-        onItemsRendered={onItemsRendered}
-        ref={ref}
-        width={300}
-      >
-        {MyRow}
-      </List>
-    }}
-  </InfiniteLoader>
+const MyInfiniteLoader = () => {
+  return (
+    <InfiniteLoader>
+      {({ onItemsRendered, ref }) => {
+        return (
+          <List
+            className='List'
+            height={150}
+            itemCount={1000}
+            itemSize={30}
+            onItemsRendered={onItemsRendered}
+            ref={ref}
+            width={300}
+          >
+            {MyRow}
+          </List>
+        )
+      }}
+    </InfiniteLoader>
+  )
 }
 
 const Variables = () => {
-  return <div>
-    <h1>'Variables'</h1>
-    <MyInfiniteList />
-  </div>
+  return (
+    <div>
+      <h1>'Variables'</h1>
+      <MyInfiniteLoader />
+    </div>
+  )
 }
 
 export default Variables
