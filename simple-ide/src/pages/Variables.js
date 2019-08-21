@@ -42,7 +42,7 @@ const MyInfiniteList = () => {
   return <InfiniteLoader>
     {({ onItemsRendered, ref }) => {
       return <List
-        className="List"
+        className='List'
         height={150}
         itemCount={1000}
         itemSize={30}
@@ -57,7 +57,7 @@ const MyInfiniteList = () => {
 }
 
 const Variables = () => {
-  return <div >
+  return <div>
     <h1>'Variables'</h1>
     <MyInfiniteList />
   </div>

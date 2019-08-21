@@ -21,17 +21,19 @@ const useStyles = makeStyles(theme => ({
 const MyAppBar = ({ header, onClick }) => {
   console.log('MyAppBar')
   const classes = useStyles()
-  return <AppBar position='static'>
-    <Toolbar>
-      <IconButton color='inherit' className={classes.menuButton} onClick={onClick} >
-        <MenuIcon />
-      </IconButton>
-      <Typography variant='h6' className={classes.header} >
-        {header}
-      </Typography>
-      <Button color='inherit' >Login</Button>
-    </Toolbar>
-  </AppBar>
+  return (
+    <AppBar position='static'>
+      <Toolbar>
+        <IconButton color='inherit' className={classes.menuButton} onClick={onClick}>
+          <MenuIcon />
+        </IconButton>
+        <Typography variant='h6' className={classes.header}>
+          {header}
+        </Typography>
+        <Button color='inherit'>Login</Button>
+      </Toolbar>
+    </AppBar>
+  )
 }
 
 // ha-ha, custom areEqual
