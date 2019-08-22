@@ -31,10 +31,15 @@ const columns = [
 ]
 
 const Variables = () => {
-  return <div>
-    <h1>'Variables'</h1>
-    <Table data={vars} columns={columns} />
-  </div>
+  return (
+    <div style={{
+      border: '1px red solid'
+    }}
+    >
+      <h1>'Variables'</h1>
+      <Table data={vars} columns={columns} />
+    </div>
+  )
 }
 
 export default Variables

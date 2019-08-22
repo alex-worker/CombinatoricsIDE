@@ -4,11 +4,15 @@ import 'react-table/react-table.css'
 import './gui.css'
 
 const Table = ({ data, columns }) => {
-  return <div><ReactTable
-    showPagination={false}
-    data={data}
-    columns={columns}
-  /></div>
+  return (
+    <div>
+      <ReactTable
+        showPagination={false}
+        data={data}
+        columns={columns}
+      />
+    </div>
+  )
 }
 
 export default Table
