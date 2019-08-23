@@ -16,27 +16,31 @@ import 'materialize-css/dist/css/materialize.min.css'
 // and here https://medium.com/dij-please/initializing-materializecss-in-react-ab4dcd0cb784
 
 const Menu = () => {
-  return <div className='flex-inner'><nav>
-    <Sidenav>
-      <li><Link className='sidenav-close' to='/vars'><i className='material-icons'>list</i>Variables</Link></li>
-      <li><Link className='sidenav-close' to='/cells'><i className='material-icons'>grid_on</i>Cells</Link></li>
-      <li><Link className='sidenav-close' to='/items'><i className='material-icons'>work</i>Items</Link></li>
-      <li><Link className='sidenav-close' to='/mess'><i className='material-icons'>message</i>Messages</Link></li>
-      <li><div className='divider' /></li>
-      <li><Link className='sidenav-close' to='/about'><i className='material-icons'>info</i>About</Link></li>
-    </Sidenav>
-  </nav></div>
+  return (
+    <nav>
+      <Sidenav>
+        <li><Link className='sidenav-close' to='/vars'><i className='material-icons'>list</i>Variables</Link></li>
+        <li><Link className='sidenav-close' to='/cells'><i className='material-icons'>grid_on</i>Cells</Link></li>
+        <li><Link className='sidenav-close' to='/items'><i className='material-icons'>work</i>Items</Link></li>
+        <li><Link className='sidenav-close' to='/mess'><i className='material-icons'>message</i>Messages</Link></li>
+        <li><div className='divider' /></li>
+        <li><Link className='sidenav-close' to='/about'><i className='material-icons'>info</i>About</Link></li>
+      </Sidenav>
+    </nav>
+  )
 }
 
 const Pages = () => {
-  return <Switch>
-    <Route exact path='/' component={About} />
-    <Route exact path='/about' component={About} />
-    <Route exact path='/cells' component={Cells} />
-    <Route exact path='/items' component={Items} />
-    <Route exact path='/mess' component={Messages} />
-    <Route exact path='/vars' component={Variables} />
-  </Switch>
+  return (
+    <Switch>
+      <Route exact path='/' component={About} />
+      <Route exact path='/about' component={About} />
+      <Route exact path='/cells' component={Cells} />
+      <Route exact path='/items' component={Items} />
+      <Route exact path='/mess' component={Messages} />
+      <Route exact path='/vars' component={Variables} />
+    </Switch>
+  )
 }
 
 function App () {
@@ -44,7 +48,7 @@ function App () {
     <div className='App'>
       <Router>
         <Menu />
-        <Pages />
+        <div className='AppPage'><Pages /></div>
       </Router>
     </div>
   )

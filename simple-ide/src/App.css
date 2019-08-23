@@ -1,6 +1,15 @@
-/* html{
-  height: 100vh;
-} */
+html {
+  /* height: 100vh; */
+}
+
+body {
+  /* height: 100%; */
+  /* position:relative; */
+  /* position:relative; */
+  /* height:auto !important; */
+  /* height: 100vh; */
+  /* min-height:100%; */
+}
 
 /* body, .root{
   height: 100vh; /* force the BODY element to match the height of the HTML element 
@@ -31,13 +40,15 @@
 
 .App {
   border: 10px cyan solid;
+  box-sizing: inherit;
+  height: 100vh;
+  /* min-height: 100%; */
+  /* overflow: hidden; */
 
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100vw;
-  height: 100vh;
-
+  flex-direction: column;
+  /* flex-wrap: nowrap; */
+  /* width: 100vw; */
 
   /* display: flex; */
   /* flex-wrap: wrap; */
@@ -49,17 +60,33 @@
   /* text-align: center; */
 }
 
-.flex-inner {
-  display: flex;
-  border: 1px red dotted;
+/* .flex-inner { */
+  /* display: flex; */
+  /* border: 1px red dotted; */
   /* justify-content: center; */
   /* align-items: center; */
   /* color: #fff; */
   /* font-size: 24px; */
+/* } */
+
+/* .myNav {
+  border: 1px blue dotted;
+} */
+
+/* .red-dotted-border {
+  border: 1px red dotted;
 }
 
-.page {
+.full-heigth {
+  /* height: 100%; 
+} */
+
+.AppPage {
   border: 1px blue dotted;
+  /* width: 100%; */
+  display: flex;
+  /* flex: 1; */
+  /* position: relative; */
   height: 100%;
 }
 

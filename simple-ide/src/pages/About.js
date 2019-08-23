@@ -80,9 +80,9 @@ const MyTablePlace = () => (
         return (
           <div
             style={{
-              width,
+              // width,
               // height,
-              border: '1px blue solid'
+              // border: '1px blue solid'
             }}
           >
             lol
@@ -95,10 +95,10 @@ const MyTablePlace = () => (
 
 const About = () => {
   return (
-    <div className='flex-inner page'>
+    <>
       <h1>'About'</h1>
       <MyTablePlace />
-    </div>
+    </>
   )
 }
 
