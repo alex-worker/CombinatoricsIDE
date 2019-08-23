@@ -17,6 +17,11 @@ html, body {
   height: 100%;
 }
 
+/* little fix, default margin-left: 10px */
+.ReactVirtualized__Table__rowColumn:first-of-type {
+  margin: 0 !important;
+}
+
 .AppList {
   /* border: 5px dashed blue; */
 }

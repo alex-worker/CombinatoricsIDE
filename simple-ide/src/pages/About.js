@@ -35,6 +35,8 @@ const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
     >
       <div
         style={{
+          margin: '0 !important',
+          padding: 0,
           whiteSpace: 'normal',
           borderBottom: '20px solid gray'
         }}
