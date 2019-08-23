@@ -1,5 +1,5 @@
 import React from 'react'
-import { AutoSizer, List, Table, Column, CellMeasurerCache, CellMeasurer, WindowScroller } from 'react-virtualized'
+import { AutoSizer, Table, Column, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import faker from 'faker'
 import 'react-virtualized/styles.css'
 
@@ -18,37 +18,6 @@ const _cache = new CellMeasurerCache({
   minHeight: 25
 })
 
-// const _renderRow = ({ index, key, style, parent }) => {
-//   return <CellMeasurer
-//     key={key}
-//     cache={_cache}
-//     parent={parent}
-//     columnIndex={0}
-//     rowIndex={index}>
-//     <tr style={{
-//       ...style
-//       // height: 35,
-//       // whiteSpace: 'nowrap'
-//     }}>
-//       <td>{list[index].name}</td>
-//       <td>{list[index].description}</td>
-//     </tr>
-//   </CellMeasurer>
-// }
-
-// const MyList = (props) => {
-//   const { width, height } = props
-//   _cache.clearAll()
-//   return <List
-//     width={width}
-//     height={height}
-//     rowHeight={_cache.rowHeight}
-//     deferredMeasurementCache={_cache}
-//     rowRenderer={_renderRow}
-//     rowCount={list.length}
-//     overscanRowCount={3} />
-// }
-
 const _rowGetter = ({ index }) => {
   return list[index]
 }
@@ -65,9 +34,9 @@ const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
       rowIndex={rowIndex}
     >
       <div
-        // className={styles.tableColumn}
         style={{
           whiteSpace: 'normal',
+          borderBottom: '20px solid gray'
         }}
       >
         {content[dataKey]}
@@ -99,6 +68,7 @@ const MyTable = ({ width, height }) => {
 const MyTablePlace = () => (
   <AutoSizer>
     {({ width, height }) => {
+      _cache.clearAll()
       return (
         <div
           className='AppList'
