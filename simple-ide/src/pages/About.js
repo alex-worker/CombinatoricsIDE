@@ -74,30 +74,34 @@ const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
 }
 
 const MyTablePlace = () => (
-  <div>
-    <AutoSizer disableHeight>
-      {({ width }) => {
-        return (
-          <div
-            style={{
-              // width,
-              // height,
-              // border: '1px blue solid'
-            }}
-          >
-            lol
-          </div>
-        )
-      }}
-    </AutoSizer>
-  </div>
+  <AutoSizer>
+    {({ width, height }) => {
+      return (
+        <div
+          style={{
+            width,
+            height,
+            border: '1px red solid'
+          }}
+        >
+          {width} x {height}
+        </div>
+      )
+    }}
+  </AutoSizer>
 )
 
 const About = () => {
   return (
     <>
-      <h1>'About'</h1>
-      <MyTablePlace />
+      <div><h1>'About'</h1></div>
+      <div style={{
+        width: '100%',
+        height: '100%',
+        border: '1px dashed green'
+      }}>
+        <MyTablePlace />
+      </div>
     </>
   )
 }
