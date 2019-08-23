@@ -7,7 +7,7 @@ const Table = ({ data, columns }) => {
   return (
     <div>
       <ReactTable
-        defaultPageSize={1000}
+        defaultPageSize={data.length}
         showPagination={false}
         data={data}
         columns={columns}
