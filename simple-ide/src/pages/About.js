@@ -81,7 +81,7 @@ const MyTablePlace = () => (
           style={{
             width,
             height,
-            border: '1px red solid'
+            border: '5px red dashed'
           }}
         >
           {width} x {height}
@@ -95,11 +95,7 @@ const About = () => {
   return (
     <>
       <div><h1>'About'</h1></div>
-      <div style={{
-        width: '100%',
-        height: '100%',
-        border: '1px dashed green'
-      }}>
+      <div className='AppPage'>
         <MyTablePlace />
       </div>
     </>

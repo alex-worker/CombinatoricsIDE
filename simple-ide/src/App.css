@@ -12,7 +12,7 @@ html, body {
 }
 
 .AppPage {
-  border: 10px blue dotted;
+  /* border: 10px blue dotted; */
   display: flex;
   flex-direction: column;
   height: 100%;
