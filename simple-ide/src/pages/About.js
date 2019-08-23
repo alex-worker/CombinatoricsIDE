@@ -55,21 +55,44 @@ const _rowGetter = ({ index }) => {
 
 const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
   const content = list[rowIndex]
+  // console.log( content[dataKey] )
   return (
     <CellMeasurer
       cache={_cache}
       columnIndex={0}
       key={dataKey}
       parent={parent}
-      rowIndex={rowIndex}>
+      rowIndex={rowIndex}
+    >
       <div
         // className={styles.tableColumn}
         style={{
           whiteSpace: 'normal',
-        }}>
+        }}
+      >
         {content[dataKey]}
       </div>
     </CellMeasurer>
+  )
+}
+
+const MyTable = ({ width, height }) => {
+  return (
+    <Table
+      width={width}
+      height={height}
+      deferredMeasurementCache={_cache}
+      rowGetter={_rowGetter}
+      rowCount={list.length}
+      rowHeight={_cache.rowHeight}
+    >
+      <Column
+        dataKey='description'
+        label='Name'
+        cellRenderer={_columnCellRenderer}
+        width={width}
+      />
+    </Table>
   )
 }
 
@@ -78,13 +101,13 @@ const MyTablePlace = () => (
     {({ width, height }) => {
       return (
         <div
+          className='AppList'
           style={{
             width,
-            height,
-            border: '5px red dashed'
+            height
           }}
         >
-          {width} x {height}
+          <MyTable width={width} height={height} />
         </div>
       )
     }}
