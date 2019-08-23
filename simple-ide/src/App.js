@@ -16,7 +16,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 // and here https://medium.com/dij-please/initializing-materializecss-in-react-ab4dcd0cb784
 
 const Menu = () => {
-  return <nav>
+  return <div className='flex-inner'><nav>
     <Sidenav>
       <li><Link className='sidenav-close' to='/vars'><i className='material-icons'>list</i>Variables</Link></li>
       <li><Link className='sidenav-close' to='/cells'><i className='material-icons'>grid_on</i>Cells</Link></li>
@@ -25,7 +25,7 @@ const Menu = () => {
       <li><div className='divider' /></li>
       <li><Link className='sidenav-close' to='/about'><i className='material-icons'>info</i>About</Link></li>
     </Sidenav>
-  </nav>
+  </nav></div>
 }
 
 const Pages = () => {

@@ -13,10 +13,10 @@ for (let index = 0; index < 1000; index++) {
   list.push(fakeData)
 }
 
-// const _cache = new CellMeasurerCache({
-//   fixedWidth: true,
-//   minHeight: 25
-// })
+const _cache = new CellMeasurerCache({
+  fixedWidth: true,
+  minHeight: 25
+})
 
 // const _renderRow = ({ index, key, style, parent }) => {
 //   return <CellMeasurer
@@ -53,41 +53,53 @@ const _rowGetter = ({ index }) => {
   return list[index]
 }
 
+const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
+  const content = list[rowIndex]
+  return (
+    <CellMeasurer
+      cache={_cache}
+      columnIndex={0}
+      key={dataKey}
+      parent={parent}
+      rowIndex={rowIndex}>
+      <div
+        // className={styles.tableColumn}
+        style={{
+          whiteSpace: 'normal',
+        }}>
+        {content[dataKey]}
+      </div>
+    </CellMeasurer>
+  )
+}
+
 const MyTablePlace = () => (
-  <div style={{
-    border: '1px dotted red',
-    height: '100vh'
-  }}>
-    <AutoSizer>
-      {({ width, height }) => (
-        <Table
-          width={width}
-          height={height}
-          rowHeight={50}
-          rowGetter={_rowGetter}
-          rowCount={list.length}
-        >
-          <Column
-            dataKey='description'
+  <div>
+    <AutoSizer disableHeight>
+      {({ width }) => {
+        return (
+          <div
             style={{
-              border: '1px dotted red',
-              margin: '0px',
-              padding: '0px',
-              whiteSpace: 'normal'
+              width,
+              // height,
+              border: '1px blue solid'
             }}
-            // width={90}
-          />
-        </Table>
-      )}
+          >
+            lol
+          </div>
+        )
+      }}
     </AutoSizer>
   </div>
 )
 
 const About = () => {
-  return <div>
-    <h1>'About'</h1>
-    <MyTablePlace />
-  </div>
+  return (
+    <div className='flex-inner page'>
+      <h1>'About'</h1>
+      <MyTablePlace />
+    </div>
+  )
 }
 
 export default About

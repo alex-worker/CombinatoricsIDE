@@ -6,18 +6,71 @@
   height: 100vh; /* force the BODY element to match the height of the HTML element 
 } */
 
+/* .page { */
+  /* display: flex; */
+  /* height: 100%; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* min-height: 1000px !important; */
+  /* border: 10px blue solid; */
+  /* display: flex; */
+  /* overflow: auto; */
+  /* flex: auto; */
+  /* flex-direction: column; */
+  /* background-color: #FFF; */
+  /* padding: 0 1rem 1rem 1rem; */
+  /* overflow: auto; */
+  /* background: white; */
+  /* height: 100%; */
+/* } */
+
+/* .NavBar { */
+  /* border: 1px blue dotted; */
+  /* display: flex; */
+/* } */
+
 .App {
+  border: 10px cyan solid;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
+
+
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* min-height: 100vh;  or use calc(100vh - header_height) */
+  /* height: 1px; */
+  
+  /* } */
   /* height: 100vh; */
   /* text-align: center; */
 }
 
-.color-dark {
-  background-color: blue;
+.flex-inner {
+  display: flex;
+  border: 1px red dotted;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* color: #fff; */
+  /* font-size: 24px; */
 }
 
-.height-max {
-  /* height: 100vh; */
+.page {
+  border: 1px blue dotted;
+  height: 100%;
 }
+
+/* .color-dark { */
+  /* background-color: blue; */
+/* } */
+
+/* .height-max {
+  /* height: 100vh; 
+} */
+
 /* .sidenav {
   width: 100px;
 } */
