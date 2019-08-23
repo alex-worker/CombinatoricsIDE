@@ -5,7 +5,7 @@ import 'react-virtualized/styles.css'
 
 var list = []
 
-for (let index = 0; index < 100; index++) {
+for (let index = 0; index < 1000; index++) {
   const fakeData = {
     name: faker.name.findName(),
     description: faker.lorem.paragraph()
@@ -69,6 +69,12 @@ const MyTablePlace = () => (
         >
           <Column
             dataKey='description'
+            style={{
+              border: '1px dotted red',
+              margin: '0px',
+              padding: '0px',
+              whiteSpace: 'normal'
+            }}
             // width={90}
           />
         </Table>
