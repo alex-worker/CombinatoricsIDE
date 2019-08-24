@@ -2,6 +2,16 @@ import React from 'react'
 import { AutoSizer, Table, Column, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import 'react-virtualized/styles.css'
 
+const itemSizeSumm = (accumulator, item) => {
+  let currentValue
+  if ('width' in item) {
+    currentValue = item.width
+  } else {
+    currentValue = 1
+  }
+  return accumulator + currentValue
+}
+
 const _cache = new CellMeasurerCache({
   fixedWidth: true,
   minHeight: 25
@@ -37,6 +47,7 @@ const MyTable = ({ width, height, list, columns }) => {
   }
 
   const listColumns = ({ columns, width }) => {
+    const maxColumnWidth = columns.reduce(itemSizeSumm, 0)
     const myList = columns.map((item, index) => {
       return (
         <Column
