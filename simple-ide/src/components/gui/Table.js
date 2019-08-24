@@ -1,53 +1,77 @@
 import React from 'react'
-import { AutoSizer, Table as VirtualTable, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
-import faker from 'faker'
+import { AutoSizer, Table, Column, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import 'react-virtualized/styles.css'
-
-var list = []
-
-for (let index = 0; index < 100; index++) {
-  const fakeData = {
-    name: faker.name.findName(),
-    description: faker.lorem.paragraph()
-  }
-  list.push(fakeData)
-}
 
 const _cache = new CellMeasurerCache({
   fixedWidth: true,
   minHeight: 25
 })
 
-const _rowGetter = ({ index }) => {
-  return list.get(index % list.size)
-}
+const MyTable = ({ width, height, list }) => {
+  const _rowGetter = ({ index }) => {
+    return list[index]
+  }
 
-const MyTable = (props) => {
-//   const { width, height, list } = props
-//   _cache.clearAll()
-  return <VirtualTable
-    // width={width}
-    // height={height}
-    rowHeight={_cache.rowHeight}
-    rowGetter={_rowGetter}
-    deferredMeasurementCache={_cache}
-    rowCount={list.length}
-  >
-    'Table'
-  </VirtualTable>
-}
+  const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
+    const content = list[rowIndex]
+    return (
+      <CellMeasurer
+        cache={_cache}
+        columnIndex={0}
+        key={dataKey}
+        parent={parent}
+        rowIndex={rowIndex}
+      >
+        <div
+          style={{
+            margin: '0 !important',
+            padding: 0,
+            whiteSpace: 'normal',
+            borderBottom: '20px solid gray'
+          }}
+        >
+          {content[dataKey]}
+        </div>
+      </CellMeasurer>
+    )
+  }
 
-const Table = (props) => {
-  const { list } = props
-  return <AutoSizer>
-    {({ width, height }) => {
-      return <MyTable
-        list={list}
+  return (
+    <Table
+      width={width}
+      height={height}
+      deferredMeasurementCache={_cache}
+      rowGetter={_rowGetter}
+      rowCount={list.length}
+      rowHeight={_cache.rowHeight}
+    >
+      <Column
+        dataKey='description'
+        label='Name'
+        cellRenderer={_columnCellRenderer}
         width={width}
-        height={height}
       />
+    </Table>
+  )
+}
+
+const MyTablePlace = ({ list }) => (
+  <AutoSizer>
+    {({ width, height }) => {
+      _cache.clearAll()
+      return (
+        <div
+          className='AppList'
+          style={{
+            width,
+            height
+          }}
+        >
+          <MyTable list={list} width={width} height={height} />
+        </div>
+      )
     }}
   </AutoSizer>
-}
+)
 
-export default Table
+export default MyTablePlace
