@@ -7,7 +7,7 @@ const _cache = new CellMeasurerCache({
   minHeight: 25
 })
 
-const MyTable = ({ width, height, list }) => {
+const MyTable = ({ width, height, list, columns }) => {
   const _rowGetter = ({ index }) => {
     return list[index]
   }
@@ -36,6 +36,21 @@ const MyTable = ({ width, height, list }) => {
     )
   }
 
+  const listColumns = ({ columns, width }) => {
+    const myList = columns.map((item, index) => {
+      return (
+        <Column
+          key={index}
+          dataKey={item.key}
+          label={item.label}
+          cellRenderer={_columnCellRenderer}
+          width={width}
+        />
+      )
+    })
+    return myList
+  }
+
   return (
     <Table
       width={width}
@@ -45,17 +60,12 @@ const MyTable = ({ width, height, list }) => {
       rowCount={list.length}
       rowHeight={_cache.rowHeight}
     >
-      <Column
-        dataKey='description'
-        label='Name'
-        cellRenderer={_columnCellRenderer}
-        width={width}
-      />
+      {listColumns({ columns, width })}
     </Table>
   )
 }
 
-const MyTablePlace = ({ list }) => (
+const MyTablePlace = ({ list, columns }) => (
   <AutoSizer>
     {({ width, height }) => {
       _cache.clearAll()
@@ -67,7 +77,7 @@ const MyTablePlace = ({ list }) => (
             height
           }}
         >
-          <MyTable list={list} width={width} height={height} />
+          <MyTable list={list} columns={columns} width={width} height={height} />
         </div>
       )
     }}

@@ -14,13 +14,17 @@ for (let index = 0; index < 1000; index++) {
   list.push(fakeData)
 }
 
+const columns = [
+  { key: 'description', name: 'Description' }
+]
+
 const About = () => {
   return (
     <>
       <div><h1>'About'</h1></div>
       <div className='AppPage'>
         {/* <MyTablePlace /> */}
-        <Table list={list} />
+        <Table columns={columns} list={list} />
       </div>
     </>
   )
