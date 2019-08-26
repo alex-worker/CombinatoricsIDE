@@ -21,9 +21,10 @@ const columns = [
 const About = () => {
   return (
     <>
-      <div><h1>'About'</h1></div>
+      <div>
+        <h1>'About'</h1>
+      </div>
       <div className='AppPage'>
-        {/* <MyTablePlace /> */}
         <Table columns={columns} list={list} />
       </div>
     </>

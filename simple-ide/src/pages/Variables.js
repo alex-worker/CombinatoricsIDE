@@ -1,4 +1,5 @@
 import React from 'react'
+import Table from '../components/gui/Table'
 
 const vars = [
   { name: 'var_act', default: '0', comment: 'Current action' },
@@ -12,25 +13,22 @@ const vars = [
 // const systemVarOffset = 10
 
 const columns = [
-  {
-    Header: 'Name',
-    accessor: 'name',
-    maxWidth: '150px'
-  },
-  {
-    Header: 'Default',
-    accessor: 'default',
-    maxWidth: '50px'
-  },
-  {
-    Header: 'Comment',
-    accessor: 'comment',
-    style: { 'white-space': 'unset' }
-  }
+  { key: 'name', name: 'Name' },
+  { key: 'default', name: 'Default' },
+  { key: 'comment', name: 'Comment' }
 ]
 
 const Variables = () => {
-  return <div>'Variables'</div>
+  return (
+    <>
+      <div>
+        <h1>'About'</h1>
+      </div>
+      <div className='AppPage'>
+        <Table columns={columns} list={vars} />
+      </div>
+    </>
+  )
 }
 
 export default Variables

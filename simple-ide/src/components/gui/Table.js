@@ -35,9 +35,10 @@ const MyTable = ({ width, height, list, columns }) => {
         <div
           style={{
             margin: '0 !important',
-            padding: 0,
-            whiteSpace: 'normal',
-            borderBottom: '20px solid gray'
+            // padding: 0,
+            // whiteSpace: 'normal',
+            // borderBottom: '20px solid gray'
+            border: '1px solid gray'
           }}
         >
           {content[dataKey]}
