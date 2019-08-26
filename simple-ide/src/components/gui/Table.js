@@ -47,7 +47,13 @@ const MyTable = ({ width, height, list, columns }) => {
   }
 
   const listColumns = ({ columns, width }) => {
-    const maxColumnWidth = columns.reduce(itemSizeSumm, 0)
+    const sumColumnWidth = columns.reduce(itemSizeSumm, 0) // сумма всех условных ширин колонок
+    const calcItemWidth = (_width) => {
+      if (_width === undefined) {
+        _width = 1
+      }
+      return width * _width / sumColumnWidth // ширину таблицы умножаем на условную ширину колонки и делим на сумму условных ширин колонок
+    }
     const myList = columns.map((item, index) => {
       return (
         <Column
@@ -55,7 +61,7 @@ const MyTable = ({ width, height, list, columns }) => {
           dataKey={item.key}
           label={item.label}
           cellRenderer={_columnCellRenderer}
-          width={width}
+          width={calcItemWidth(item.width)}
         />
       )
     })
