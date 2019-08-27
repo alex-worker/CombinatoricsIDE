@@ -34,10 +34,7 @@ const MyTable = ({ width, height, list, columns }) => {
       >
         <div
           style={{
-            margin: '0 !important',
-            // padding: 0,
-            // whiteSpace: 'normal',
-            // borderBottom: '20px solid gray'
+            whiteSpace: 'normal',
             border: '1px solid gray'
           }}
         >
@@ -86,6 +83,7 @@ const MyTable = ({ width, height, list, columns }) => {
 const MyTablePlace = ({ list, columns }) => (
   <AutoSizer>
     {({ width, height }) => {
+      console.log( width, height )
       _cache.clearAll()
       return (
         <div

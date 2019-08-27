@@ -15,14 +15,14 @@ const vars = [
 const columns = [
   { key: 'name', name: 'Name' },
   { key: 'default', name: 'Default' },
-  { key: 'comment', name: 'Comment', width: 10 }
+  { key: 'comment', name: 'Comment' }
 ]
 
 const Variables = () => {
   return (
     <>
       <div>
-        <h1>'About'</h1>
+        <h1>'Variables'</h1>
       </div>
       <div className='AppPage'>
         <Table columns={columns} list={vars} />
