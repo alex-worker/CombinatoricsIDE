@@ -15,7 +15,7 @@ const vars = [
 const columns = [
   { key: 'name', name: 'Name' },
   { key: 'default', name: 'Default' },
-  { key: 'comment', name: 'Comment' }
+  { key: 'comment', name: 'Comment', width: 10 }
 ]
 
 const Variables = () => {
