@@ -18,6 +18,7 @@ const _cache = new CellMeasurerCache({
 })
 
 const MyTable = ({ width, height, list, columns }) => {
+  _cache.clearAll()
   const _rowGetter = ({ index }) => {
     return list[index]
   }
@@ -55,11 +56,12 @@ const MyTable = ({ width, height, list, columns }) => {
     const myList = columns.map((item, index) => {
       return (
         <Column
+          className='tableColumn'
           key={index}
           dataKey={item.key}
           label={item.label}
-          cellRenderer={_columnCellRenderer}
-          width={calcItemWidth(item.width)}
+          // cellRenderer={_columnCellRenderer}
+          // width={calcItemWidth(item.width)}
         />
       )
     })
@@ -68,8 +70,11 @@ const MyTable = ({ width, height, list, columns }) => {
 
   return (
     <Table
+      className='tableTable'
       width={width}
       height={height}
+      headerHeight={20}
+      rowClassName='tableRow'
       deferredMeasurementCache={_cache}
       rowGetter={_rowGetter}
       rowCount={list.length}
@@ -83,7 +88,6 @@ const MyTable = ({ width, height, list, columns }) => {
 const MyTablePlace = ({ list, columns }) => (
   <AutoSizer>
     {({ width, height }) => {
-      console.log( width, height )
       _cache.clearAll()
       return (
         <div

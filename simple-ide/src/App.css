@@ -17,10 +17,22 @@ html, body {
   height: 100%;
 }
 
-/* little fix, default margin-left: 10px */
-.ReactVirtualized__Table__rowColumn {
-  margin: 0 !important;
+.tableTable {
+  border: 5px dashed blue;
 }
+
+.tableRow {
+  border: 1px solid gray;
+}
+
+.tableColumn {
+  border: 1px solid red;
+}
+
+/* little fix, default margin-left: 10px */
+/* .ReactVirtualized__Table__rowColumn { */
+  /* margin: 0 !important; */
+/* } */
 
 .AppList {
   /* border: 5px dashed blue; */
