@@ -2,6 +2,7 @@ import React from 'react'
 import { AutoSizer, Table, Column, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import 'react-virtualized/styles.css'
 
+/*
 const itemSizeSumm = (accumulator, item) => {
   let currentValue
   if ('width' in item) {
@@ -62,6 +63,7 @@ const MyTable = ({ width, height, list, columns }) => {
           label={item.label}
           // cellRenderer={_columnCellRenderer}
           // width={calcItemWidth(item.width)}
+          width={200}
         />
       )
     })
@@ -88,18 +90,85 @@ const MyTable = ({ width, height, list, columns }) => {
 const MyTablePlace = ({ list, columns }) => (
   <AutoSizer>
     {({ width, height }) => {
-      _cache.clearAll()
+  //     _cache.clearAll()
       return (
+  //       <div
+  //         className='AppList'
+  //         style={{
+  //           width,
+  //           height
+  //         }}
+  //       >
+          <MyTable list={list} columns={columns} width={width} height={height} />
+        // </div>
+      )
+    }}
+  </AutoSizer>
+)
+*/
+
+
+const MyTable = ({ width, height, list, columns, colCellRenderer }) => {
+
+  const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
+    const content = list[rowIndex]
+    return (
+      <CellMeasurer
+        cache={_cache}
+        columnIndex={0}
+        key={dataKey}
+        parent={parent}
+        rowIndex={rowIndex}
+      >
         <div
-          className='AppList'
           style={{
-            width,
-            height
+            whiteSpace: 'normal',
+            // border: '1px solid gray'
           }}
         >
-          <MyTable list={list} columns={columns} width={width} height={height} />
+          {content[dataKey]}
         </div>
-      )
+      </CellMeasurer>
+    )
+  }
+  _cache.clearAll()
+  return <div>
+    <Table
+      rowClassName='tableRow'
+      headerHeight={40}
+      width={width}
+      height={height}
+      rowHeight={_cache.rowHeight}
+      rowCount={list.length}
+      rowGetter={({ index }) => list[index]}
+      >
+        <Column
+          // cellRenderer={_columnCellRenderer}
+          label='Name'
+          dataKey='name'
+          width={100}
+        />
+        <Column
+          cellRenderer={_columnCellRenderer}
+          label='Description'
+          dataKey='description'
+          width={width-100}
+        />
+      </Table>
+  </div>
+}
+
+const _cache = new CellMeasurerCache({
+  fixedWidth: true,
+  minHeight: 25
+})
+
+const MyTablePlace = ({ list, columns }) => (
+  <AutoSizer>
+    {({ width, height }) => {
+      _cache.clearAll()
+      console.log('_cache clear')
+      return <MyTable list={list} columns={columns} width={width} height={height} />
     }}
   </AutoSizer>
 )

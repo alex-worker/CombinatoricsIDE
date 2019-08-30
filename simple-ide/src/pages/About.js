@@ -24,7 +24,7 @@ const About = () => {
       <div>
         <h1>'About'</h1>
       </div>
-      <div className='AppPage'>
+      <div className='AppContainer'>
         <Table columns={columns} list={list} />
       </div>
     </>
