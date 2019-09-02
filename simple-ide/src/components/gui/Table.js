@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Children } from 'react'
 import { AutoSizer, Table, Column, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import 'react-virtualized/styles.css'
 
@@ -107,40 +107,66 @@ const MyTablePlace = ({ list, columns }) => (
 )
 */
 
-const columnMaker = (columns) => {
+/* <Column
+        label='Name'
+        dataKey='name'
+        width={100}
+      />
+      <Column
+        cellRenderer={_columnCellRenderer}
+        label='Description'
+        dataKey='description'
+        width={width - 100}
+      /> */
+
+const columnMaker = (columns, width) => {
   const columnList = columns.map((item, index) => {
+    const colWidth = (typeof item.width === 'function') ? item.width(width) : item.width
+    // console.log( colWidth )
     return <Column
       key={index}
       label={item.label}
       dataKey={item.key}
-      // width={100}
+      width={colWidth}
     />
   })
   return columnList
 }
 
-const MyTable = ({ width, height, list, columns, colCellRenderer }) => {
-  const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
-    const content = list[rowIndex]
-    return (
-      <CellMeasurer
-        cache={_cache}
-        columnIndex={0}
-        key={dataKey}
-        parent={parent}
-        rowIndex={rowIndex}
-      >
-        <div
-          style={{
-            whiteSpace: 'normal'
-            // border: '1px solid gray'
-          }}
-        >
-          {content[dataKey]}
-        </div>
-      </CellMeasurer>
-    )
-  }
+  // const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
+  //   const content = list[rowIndex]
+  //   return (
+  //     <CellMeasurer
+  //       cache={_cache}
+  //       columnIndex={0}
+  //       key={dataKey}
+  //       parent={parent}
+  //       rowIndex={rowIndex}
+  //     >
+  //       <div
+  //         style={{
+  //           whiteSpace: 'normal'
+  //           // border: '1px solid gray'
+  //         }}
+  //       >
+  //         {content[dataKey]}
+  //       </div>
+  //     </CellMeasurer>
+  //   )
+  // }
+
+const MyTable = ({ width, height, list, columns }) => {
+  // column width calculated array
+  // let fixedWidthSum = 0 // summ of fixed cols
+  // let unfixedColsNum = 0 // count of resized columns
+  // const columnWidth = columns.map((item, index) => {
+  //   if ('width' in item) {
+  //     fixedWidthSum += item.width
+  //     return item.width
+  //   }
+  //   return 0
+  // })
+  // console.log(columnWidth, fixedWidthSum)
   _cache.clearAll()
   return <div>
     <Table
@@ -152,18 +178,7 @@ const MyTable = ({ width, height, list, columns, colCellRenderer }) => {
       rowCount={list.length}
       rowGetter={({ index }) => list[index]}
     >
-      {columnMaker(list)}
-      {/* <Column
-        label='Name'
-        dataKey='name'
-        width={100}
-      />
-      <Column
-        cellRenderer={_columnCellRenderer}
-        label='Description'
-        dataKey='description'
-        width={width - 100}
-      /> */}
+      {columnMaker(columns, width)}
     </Table>
   </div>
 }

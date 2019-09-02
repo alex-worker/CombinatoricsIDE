@@ -15,7 +15,16 @@ for (let index = 0; index < 1000; index++) {
 }
 
 const columns = [
-  { key: 'description', label: 'Description' }
+  {
+    key: 'name',
+    label: 'Name',
+    width: 150
+  },
+  {
+    key: 'description',
+    label: 'Description',
+    width: (width) => { return width - 100 }
+  }
 ]
 
 const About = () => {
