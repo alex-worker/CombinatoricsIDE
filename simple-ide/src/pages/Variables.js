@@ -21,9 +21,13 @@ const vars = [
 // const systemVarOffset = 10
 
 const columns = [
-  { key: 'name', label: 'Имя' },
-  { key: 'default', label: 'Значение по умолчанию' },
-  { key: 'description', label: 'Описание' }
+  { key: 'name', label: 'Имя', width: 100 },
+  { key: 'default', label: 'Def', width: 10 },
+  { 
+    key: 'description',
+    label: 'Описание',
+    width: (width)=>{ return width - 110 }
+  }
 ]
 
 const Variables = () => {

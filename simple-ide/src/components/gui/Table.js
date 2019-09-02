@@ -122,7 +122,6 @@ const MyTablePlace = ({ list, columns }) => (
 const columnMaker = (columns, width) => {
   const columnList = columns.map((item, index) => {
     const colWidth = (typeof item.width === 'function') ? item.width(width) : item.width
-    // console.log( colWidth )
     return <Column
       key={index}
       label={item.label}

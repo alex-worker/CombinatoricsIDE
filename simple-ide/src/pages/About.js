@@ -15,11 +15,7 @@ for (let index = 0; index < 1000; index++) {
 }
 
 const columns = [
-  {
-    key: 'name',
-    label: 'Name',
-    width: 150
-  },
+  { key: 'name', label: 'Name', width: 150 },
   {
     key: 'description',
     label: 'Description',
