@@ -107,9 +107,19 @@ const MyTablePlace = ({ list, columns }) => (
 )
 */
 
+const columnMaker = (columns) => {
+  const columnList = columns.map((item, index) => {
+    return <Column
+      key={index}
+      label={item.label}
+      dataKey={item.key}
+      // width={100}
+    />
+  })
+  return columnList
+}
 
 const MyTable = ({ width, height, list, columns, colCellRenderer }) => {
-
   const _columnCellRenderer = ({ dataKey, parent, rowIndex }) => {
     const content = list[rowIndex]
     return (
@@ -122,7 +132,7 @@ const MyTable = ({ width, height, list, columns, colCellRenderer }) => {
       >
         <div
           style={{
-            whiteSpace: 'normal',
+            whiteSpace: 'normal'
             // border: '1px solid gray'
           }}
         >
@@ -141,20 +151,20 @@ const MyTable = ({ width, height, list, columns, colCellRenderer }) => {
       rowHeight={_cache.rowHeight}
       rowCount={list.length}
       rowGetter={({ index }) => list[index]}
-      >
-        <Column
-          // cellRenderer={_columnCellRenderer}
-          label='Name'
-          dataKey='name'
-          width={100}
-        />
-        <Column
-          cellRenderer={_columnCellRenderer}
-          label='Description'
-          dataKey='description'
-          width={width-100}
-        />
-      </Table>
+    >
+      {columnMaker(list)}
+      {/* <Column
+        label='Name'
+        dataKey='name'
+        width={100}
+      />
+      <Column
+        cellRenderer={_columnCellRenderer}
+        label='Description'
+        dataKey='description'
+        width={width - 100}
+      /> */}
+    </Table>
   </div>
 }
 

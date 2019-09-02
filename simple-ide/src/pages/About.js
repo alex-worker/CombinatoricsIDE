@@ -15,7 +15,7 @@ for (let index = 0; index < 1000; index++) {
 }
 
 const columns = [
-  { key: 'description', name: 'Description' }
+  { key: 'description', label: 'Description' }
 ]
 
 const About = () => {
