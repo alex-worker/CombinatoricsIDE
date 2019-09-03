@@ -1,5 +1,6 @@
-import React, { Children } from 'react'
+import React from 'react'
 import { AutoSizer, Table, Column, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
+import Draggable from 'react-draggable'
 import 'react-virtualized/styles.css'
 
 /*
@@ -119,10 +120,40 @@ const MyTablePlace = ({ list, columns }) => (
         width={width - 100}
       /> */
 
+const _resizeRow = ({ dataKey, deltaX }) => {
+
+}
+
+const _headerRenderer = ({
+  columnData,
+  dataKey,
+  disableSort,
+  label,
+  sortBy,
+  sortDirection
+}) => {
+  return <React.Fragment key={dataKey}>
+    <div className='ReactVirtualized__Table__headerTruncatedText'>
+      {label}
+    </div>
+    <Draggable
+      axis='x'
+      defaultClassName='DragHandle'
+      defaultClassNameDragging='DragHandleActive'
+      onDrag={(event, { deltaX }) => _resizeRow({ dataKey, deltaX })}
+      position={{ x: 0 }}
+      zIndex={999}
+    >
+      <span className='DragHandleIcon'>⋮</span>
+    </Draggable>
+  </React.Fragment>
+}
+
 const columnMaker = (columns, width) => {
   const columnList = columns.map((item, index) => {
     const colWidth = (typeof item.width === 'function') ? item.width(width) : item.width
     return <Column
+      headerRenderer={_headerRenderer}
       key={index}
       label={item.label}
       dataKey={item.key}

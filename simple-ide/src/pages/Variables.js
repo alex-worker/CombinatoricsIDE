@@ -22,11 +22,11 @@ const vars = [
 
 const columns = [
   { key: 'name', label: 'Имя', width: 100 },
-  { key: 'default', label: 'Def', width: 10 },
-  { 
+  { key: 'default', label: 'Def', width: 50 },
+  {
     key: 'description',
     label: 'Описание',
-    width: (width)=>{ return width - 110 }
+    width: (width) => { return width - 130 }
   }
 ]
 
