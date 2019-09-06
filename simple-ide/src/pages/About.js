@@ -6,6 +6,10 @@ import Table from '../components/gui/Table'
 
 var list = []
 
+const _onClick = () => {
+  alert('click!')
+}
+
 for (let index = 0; index < 1000; index++) {
   const fakeData = {
     name: faker.name.findName(),
@@ -30,7 +34,7 @@ const About = () => {
         <h1>'About'</h1>
       </div>
       <div className='AppContainer'>
-        <Table columns={columns} list={list} />
+        <Table columns={columns} list={list} onCellClick={_onClick} />
       </div>
     </>
   )

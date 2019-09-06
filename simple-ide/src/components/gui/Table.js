@@ -1,6 +1,6 @@
 import React from 'react'
-import { AutoSizer, Table, Column, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
-import Draggable from 'react-draggable'
+import { AutoSizer, Table, Column, CellMeasurerCache /*, CellMeasurer*/ } from 'react-virtualized'
+// import Draggable from 'react-draggable'
 import 'react-virtualized/styles.css'
 
 /*
@@ -151,8 +151,11 @@ const MyTablePlace = ({ list, columns }) => (
 //   )
 // }
 
+let _onInternalClick
+
 const _onClick = (row, key, data) => {
   console.log(row, key, data)
+  _onInternalClick()
 }
 
 const _cellRenderer = ({
@@ -206,7 +209,8 @@ const columnMaker = (columns, width) => {
   //   )
   // }
 
-const MyTable = ({ width, height, list, columns }) => {
+const MyTable = ({ width, height, list, columns, onClick }) => {
+  _onInternalClick = onClick
   // column width calculated array
   // let fixedWidthSum = 0 // summ of fixed cols
   // let unfixedColsNum = 0 // count of resized columns
@@ -239,12 +243,12 @@ const _cache = new CellMeasurerCache({
   minHeight: 25
 })
 
-const MyTablePlace = ({ list, columns }) => (
+const MyTablePlace = ({ list, columns, onCellClick }) => (
   <AutoSizer>
     {({ width, height }) => {
       _cache.clearAll()
       // console.log('_cache clear')
-      return <MyTable list={list} columns={columns} width={width} height={height} />
+      return <MyTable list={list} columns={columns} width={width} height={height} onClick={onCellClick} />
     }}
   </AutoSizer>
 )
