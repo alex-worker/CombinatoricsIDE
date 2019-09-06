@@ -120,45 +120,66 @@ const MyTablePlace = ({ list, columns }) => (
         width={width - 100}
       /> */
 
-const _resizeRow = ({ dataKey, deltaX }) => {
+// const _resizeRow = ({ dataKey, deltaX }) => {
 
+// }
+
+// const _headerRenderer = ({
+//   columnData,
+//   dataKey,
+//   disableSort,
+//   label,
+//   sortBy,
+//   sortDirection
+// }) => {
+//   return (
+//     <React.Fragment key={dataKey}>
+//       <div className='ReactVirtualized__Table__headerTruncatedText'>
+//         {label}
+//       </div>
+//       <Draggable
+//         axis='x'
+//         defaultClassName='DragHandle'
+//         defaultClassNameDragging='DragHandleActive'
+//         onDrag={(event, { deltaX }) => _resizeRow({ dataKey, deltaX })}
+//         position={{ x: 0 }}
+//         zIndex={999}
+//       >
+//         <span className='DragHandleIcon'>⋮</span>
+//       </Draggable>
+//     </React.Fragment>
+//   )
+// }
+
+const _onClick = (row, key, data) => {
+  console.log(row, key, data)
 }
 
-const _headerRenderer = ({
+const _cellRenderer = ({
+  cellData,
   columnData,
+  columnIndex,
   dataKey,
-  disableSort,
-  label,
-  sortBy,
-  sortDirection
+  isScrolling,
+  rowData,
+  rowIndex
 }) => {
-  return <React.Fragment key={dataKey}>
-    <div className='ReactVirtualized__Table__headerTruncatedText'>
-      {label}
-    </div>
-    <Draggable
-      axis='x'
-      defaultClassName='DragHandle'
-      defaultClassNameDragging='DragHandleActive'
-      onDrag={(event, { deltaX }) => _resizeRow({ dataKey, deltaX })}
-      position={{ x: 0 }}
-      zIndex={999}
-    >
-      <span className='DragHandleIcon'>⋮</span>
-    </Draggable>
-  </React.Fragment>
+  return <div onClick={() => _onClick(rowIndex, dataKey, rowData)}>{cellData}</div>
 }
 
 const columnMaker = (columns, width) => {
   const columnList = columns.map((item, index) => {
     const colWidth = (typeof item.width === 'function') ? item.width(width) : item.width
-    return <Column
-      headerRenderer={_headerRenderer}
-      key={index}
-      label={item.label}
-      dataKey={item.key}
-      width={colWidth}
-    />
+    return (
+      <Column
+        // headerRenderer={_headerRenderer}
+        key={index}
+        label={item.label}
+        dataKey={item.key}
+        width={colWidth}
+        cellRenderer={_cellRenderer}
+      />
+    )
   })
   return columnList
 }
@@ -222,7 +243,7 @@ const MyTablePlace = ({ list, columns }) => (
   <AutoSizer>
     {({ width, height }) => {
       _cache.clearAll()
-      console.log('_cache clear')
+      // console.log('_cache clear')
       return <MyTable list={list} columns={columns} width={width} height={height} />
     }}
   </AutoSizer>

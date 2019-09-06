@@ -19,7 +19,7 @@ const columns = [
   {
     key: 'description',
     label: 'Description',
-    width: (width) => { return width - 100 }
+    width: (width) => { return width - 100 },
   }
 ]
 
