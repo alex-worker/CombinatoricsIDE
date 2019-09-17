@@ -8,18 +8,20 @@ const _showHeader = (columns) => {
   })
 }
 
-const _showRow = (item, index) => {
-  return (
-    <td key={index}>
-      {item}
-    </td>
-  )
+const _showRow = (item, onCellClick) => {
+  return ObjectMap(item, (index) => {
+    return (
+      <td key={index} onClick={onCellClick}>
+        {index}
+      </td>
+    )
+  })
 }
 
-const _showRows = (list) => {
+const _showRows = (list, onCellClick) => {
   return list.map((item, index) => (
     <tr key={index}>
-      {ObjectMap(item, _showRow)}
+      {_showRow(item, onCellClick)}
     </tr>
   ))
 }
@@ -32,7 +34,7 @@ const MyTablePlace = ({ list, columns, onCellClick }) => (
       </tr>
     </thead>
     <tbody>
-      {_showRows(list)}
+      {_showRows(list, onCellClick)}
     </tbody>
   </table>
 )
