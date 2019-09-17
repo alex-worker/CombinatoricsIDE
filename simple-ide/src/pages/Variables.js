@@ -1,6 +1,10 @@
 import React from 'react'
 import Table from '../components/gui/Table'
 
+const _onClick = (evt) => {
+  // alert(evt)
+}
+
 // const vars = [
 //   { name: 'var_act', default: '0', description: 'Current action' },
 //   { name: 'var_ret', default: '0', description: 'Script return value' },
@@ -21,13 +25,9 @@ const vars = [
 // const systemVarOffset = 10
 
 const columns = [
-  { key: 'name', label: 'Имя', width: 100 },
-  { key: 'default', label: 'Def', width: 50 },
-  {
-    key: 'description',
-    label: 'Описание',
-    width: (width) => { return width - 130 }
-  }
+  { key: 'name', label: 'Имя' },
+  { key: 'default', label: 'Def' },
+  { key: 'description', label: 'Описание' }
 ]
 
 const Variables = () => {
@@ -37,7 +37,7 @@ const Variables = () => {
         <h1>'Variables'</h1>
       </div>
       <div className='AppPage'>
-        <Table columns={columns} list={vars} />
+        <Table columns={columns} list={vars} onCellClick={_onClick} />
       </div>
     </>
   )

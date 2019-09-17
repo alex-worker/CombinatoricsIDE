@@ -7,7 +7,7 @@ import Table from '../components/gui/Table'
 var list = []
 
 const _onClick = () => {
-  alert('click!')
+  // alert('click!')
 }
 
 for (let index = 0; index < 1000; index++) {

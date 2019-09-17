@@ -8,20 +8,27 @@ const _showHeader = (columns) => {
   })
 }
 
-const _showRow = (item, onCellClick) => {
-  return ObjectMap(item, (index) => {
-    return (
-      <td key={index} onClick={onCellClick}>
-        {index}
-      </td>
-    )
+const _showCell = (rowNum, colNum, data, onCellClick) => {
+  const _onCellClick = () => {
+    console.log(rowNum, colNum, 'clocl')
+  }
+  return (
+    <td key={colNum} onClick={_onCellClick}>
+      {data}
+    </td>
+  )
+}
+
+const _showRow = (item, rowNum, onCellClick) => {
+  return ObjectMap(item, (cell, index) => {
+    return _showCell(rowNum, index, cell, onCellClick)
   })
 }
 
 const _showRows = (list, onCellClick) => {
   return list.map((item, index) => (
     <tr key={index}>
-      {_showRow(item, onCellClick)}
+      {_showRow(item, index, onCellClick)}
     </tr>
   ))
 }
