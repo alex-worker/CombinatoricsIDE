@@ -8,20 +8,20 @@ const _showHeader = (columns) => {
   })
 }
 
-const _showCell = (rowNum, colNum, data, onCellClick) => {
+const _showCell = (rowNum, key, data, onCellClick) => {
   const _onCellClick = () => {
-    console.log(rowNum, colNum, 'clocl')
+    console.log(rowNum, key, 'clocl')
   }
   return (
-    <td key={colNum} onClick={_onCellClick}>
+    <td key={key} onClick={_onCellClick}>
       {data}
     </td>
   )
 }
 
 const _showRow = (item, rowNum, onCellClick) => {
-  return ObjectMap(item, (cell, index) => {
-    return _showCell(rowNum, index, cell, onCellClick)
+  return ObjectMap(item, (cell, key) => {
+    return _showCell(rowNum, key, cell, onCellClick)
   })
 }
 

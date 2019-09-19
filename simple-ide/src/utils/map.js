@@ -8,11 +8,11 @@ exports.checkProperty = (key, obj) => {
 
 exports.map = (obj, func) => {
   const ret = []
-  let index = 0
+  // let index = 0
   for (var key in obj) {
     if (key in obj) { // not use hasOwnProperty а то ругается линтер
-      ret.push(func(obj[key], index))
-      index++
+      ret.push(func(obj[key], key))
+      // index++
     }
   }
   return ret
