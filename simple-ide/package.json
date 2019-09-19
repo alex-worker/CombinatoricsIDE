@@ -9,14 +9,14 @@
     "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.2.0",
-    "@storybook/addon-links": "^5.2.0",
-    "@storybook/addons": "^5.2.0",
-    "@storybook/cli": "^5.2.0",
-    "@storybook/react": "^5.2.0",
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
+    "@storybook/cli": "^5.2.1",
+    "@storybook/react": "^5.2.1",
     "faker": "^4.1.0",
     "react-scripts": "^3.1.1",
-    "standard": "^14.3.0"
+    "standard": "^14.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
