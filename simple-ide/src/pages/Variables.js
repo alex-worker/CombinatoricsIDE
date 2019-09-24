@@ -1,5 +1,8 @@
 import React from 'react'
 import Table from '../components/gui/Table'
+import Storage from '../storage/Storage'
+
+const db = new Storage()
 
 const _onClick = (evt) => {
   // alert(evt)

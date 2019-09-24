@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "materialize-css": "^1.0.0",
+    "pouchdb": "^7.1.1",
+    "pouchdb-debug": "^7.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1"
