@@ -19,7 +19,6 @@ const _cache = new CellMeasurerCache({
 })
 
 const _renderRow = (params) => {
-//   console.log( params )
   const { index, key, style, parent } = params
   return <CellMeasurer
     key={key}

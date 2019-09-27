@@ -4,19 +4,6 @@ import Storage from '../storage/Storage'
 
 const db = new Storage()
 
-const _onClick = (evt) => {
-  // alert(evt)
-}
-
-// const vars = [
-//   { name: 'var_act', default: '0', description: 'Current action' },
-//   { name: 'var_ret', default: '0', description: 'Script return value' },
-//   { name: 'var_pos_y', default: '0', description: 'Pos X' },
-//   { name: 'var_pos_x', default: '0', description: 'Pos Y' },
-//   { name: 'item_id', default: '0', description: 'Active item id' },
-//   { name: 'game_over', default: '0', description: 'Game over type, 0 - game not ending.' }
-// ]
-
 const vars = [
   { name: 'var_act', default: '0', description: 'Текущее действие' },
   { name: 'var_ret', default: '0', description: 'Что возвратил скрипт после своего выполнения, стек не реализован да и не нужен' },
@@ -25,7 +12,10 @@ const vars = [
   { name: 'item_id', default: '0', description: 'ID активного предмета' },
   { name: 'game_over', default: '0', description: 'Тип окончания игры, 0 - игра еще не окончена.' }
 ]
-// const systemVarOffset = 10
+
+const _onClick = (rowNum, index) => {
+  console.log('onClick!', rowNum, index, vars[rowNum][index])
+}
 
 const columns = [
   { key: 'name', label: 'Имя' },

@@ -9,8 +9,8 @@ const _showHeader = (columns) => {
 }
 
 const _showCell = (rowNum, key, data, onCellClick) => {
-  const _onCellClick = () => {
-    console.log(rowNum, key, 'clocl')
+  function _onCellClick () {
+    if (onCellClick) onCellClick(rowNum, key)
   }
   return (
     <td key={key} onClick={_onCellClick}>
