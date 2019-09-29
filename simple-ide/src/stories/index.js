@@ -2,8 +2,7 @@ import React from 'react'
 import faker from 'faker'
 
 import Sidenav from '../components/gui/Sidenav'
-import List from '../components/gui/List'
-import Table from '../components/gui/Table'
+import Grid from '../components/gui/Grid'
 
 import { storiesOf } from '@storybook/react'
 
@@ -17,6 +16,11 @@ for (let index = 0; index < 100; index++) {
   list.push(fakeData)
 }
 
+const columns = [
+  { key: 'name', label: 'Имя' },
+  { key: 'description', label: 'Описание' },
+]
+
 storiesOf('GUI', module)
   .add('Sidenav', () =>
     <Sidenav>
@@ -25,17 +29,11 @@ storiesOf('GUI', module)
       <li>Item 3</li>
     </Sidenav>
   )
-  .add('List', () =>
+  .add('Grid', () =>
     <div style={{ height: '100vh', border: '1px black solid' }}>
-      <List
+      <Grid name={'My Custom Grid'}
         list={list}
-      />
-    </div>
-  )
-  .add('Table', () =>
-    <div style={{ height: '100vh', border: '1px black solid' }}>
-      <Table
-        list={list}
+        columns={columns}
       />
     </div>
   )

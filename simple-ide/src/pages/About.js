@@ -1,8 +1,8 @@
 import React from 'react'
 // import { AutoSizer, Table, Column, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import faker from 'faker'
-// import 'react-virtualized/styles.css'
 import Table from '../components/gui/Table'
+import 'materialize-css/dist/css/materialize.min.css'
 
 var list = []
 

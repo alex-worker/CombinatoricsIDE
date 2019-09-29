@@ -1,7 +1,7 @@
 import React from 'react'
 import { AutoSizer, List as VirtualList, CellMeasurerCache, CellMeasurer } from 'react-virtualized'
 import faker from 'faker'
-import 'react-virtualized/styles.css'
+import 'materialize-css/dist/css/materialize.min.css'
 
 var list = []
 
