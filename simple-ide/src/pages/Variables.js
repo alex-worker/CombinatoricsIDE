@@ -30,7 +30,8 @@ const columns = [
 const Variables = () => {
   return (
     <>
-      <Grid name={'Variables'}
+      <Grid
+        name='Variables'
         list={vars}
         columns={columns}
         onAdd={_onClickAdd}
