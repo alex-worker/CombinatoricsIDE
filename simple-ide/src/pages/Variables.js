@@ -1,5 +1,5 @@
 import React from 'react'
-import Table from '../components/gui/Table'
+import Grid from '../components/gui/Grid'
 import Storage from '../storage/Storage'
 
 const db = new Storage()
@@ -17,6 +17,10 @@ const _onClick = (rowNum, index) => {
   console.log('onClick!', rowNum, index, vars[rowNum][index])
 }
 
+const _onClickAdd = () => {
+  console.log('onClickAdd!')
+}
+
 const columns = [
   { key: 'name', label: 'Имя' },
   { key: 'default', label: 'Def' },
@@ -26,12 +30,12 @@ const columns = [
 const Variables = () => {
   return (
     <>
-      <div>
-        <h1>'Variables'</h1>
-      </div>
-      <div className='AppPage'>
-        <Table columns={columns} list={vars} onCellClick={_onClick} />
-      </div>
+      <Grid name={'Variables'}
+        list={vars}
+        columns={columns}
+        onAdd={_onClickAdd}
+        onEdit={_onClick}
+      />
     </>
   )
 }

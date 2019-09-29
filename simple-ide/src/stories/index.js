@@ -21,6 +21,10 @@ const columns = [
   { key: 'description', label: 'Описание' },
 ]
 
+const _onClickAdd = () => {
+  alert('Click Add button!')
+}
+
 storiesOf('GUI', module)
   .add('Sidenav', () =>
     <Sidenav>
@@ -34,6 +38,7 @@ storiesOf('GUI', module)
       <Grid name={'My Custom Grid'}
         list={list}
         columns={columns}
+        onAdd={_onClickAdd}
       />
     </div>
   )
