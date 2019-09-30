@@ -12,8 +12,19 @@ const _showCell = (rowNum, key, data, onCellClick) => {
   function _onCellClick () {
     if (onCellClick) onCellClick(rowNum, key)
   }
+  const _onMouseEnter = () => {
+    console.log('mouse enter', rowNum, key)
+  }
+  const _onMouseLeave = () => {
+    console.log('mouse leave', rowNum, key)
+  }
   return (
-    <td key={key} onClick={_onCellClick}>
+    <td
+      key={key}
+      onClick={_onCellClick}
+      onMouseEnter={_onMouseEnter}
+      onMouseLeave={_onMouseLeave}
+    >
       {data}
     </td>
   )
