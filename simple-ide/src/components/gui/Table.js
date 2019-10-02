@@ -8,15 +8,29 @@ const _showHeader = (columns) => {
   })
 }
 
+const _showData = (data, editMode) => {
+  const _onChange = (e) => {
+    console.log(e.target.value, 'change')
+  }
+  if (!editMode) {
+    return data
+  }
+  return <textarea value={data} onChange={_onChange} />
+}
+
 const _showCell = (rowNum, key, data, onCellClick) => {
+  const [editMode, setEditMode] = React.useState(false)
+
   function _onCellClick () {
     if (onCellClick) onCellClick(rowNum, key)
   }
   const _onMouseEnter = () => {
-    console.log('mouse enter', rowNum, key)
+    setEditMode(true)
+    // console.log('mouse enter', rowNum, key)
   }
   const _onMouseLeave = () => {
-    console.log('mouse leave', rowNum, key)
+    setEditMode(false)
+    // console.log('mouse leave', rowNum, key)
   }
   return (
     <td
@@ -25,7 +39,7 @@ const _showCell = (rowNum, key, data, onCellClick) => {
       onMouseEnter={_onMouseEnter}
       onMouseLeave={_onMouseLeave}
     >
-      {data}
+      {_showData(data, editMode)}
     </td>
   )
 }
