@@ -6,8 +6,8 @@ import 'materialize-css/dist/css/materialize.min.css'
 
 var list = []
 
-const _onClick = () => {
-  // alert('click!')
+const _onChange = (row, key, newValue) => {
+  console.log(row, key, newValue)
 }
 
 for (let index = 0; index < 1000; index++) {
@@ -34,7 +34,7 @@ const About = () => {
         <h1>'About'</h1>
       </div>
       <div className='AppContainer'>
-        <Table columns={columns} list={list} onCellClick={_onClick} />
+        <Table columns={columns} list={list} onCellChange={_onChange} />
       </div>
     </>
   )

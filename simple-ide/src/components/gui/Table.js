@@ -8,57 +8,55 @@ const _showHeader = (columns) => {
   })
 }
 
-const _showData = (data, editMode) => {
-  const _onChange = (e) => {
-    console.log(e.target.value, 'change')
-  }
+const _showData = (data, editMode, onChange) => {
   if (!editMode) {
     return data
   }
-  return <textarea value={data} onChange={_onChange} />
+  return <textarea value={data} onChange={onChange} />
 }
 
-const _showCell = (rowNum, key, data, onCellClick) => {
+const _showCell = (rowNum, key, data, onChange) => {
   const [editMode, setEditMode] = React.useState(false)
 
-  function _onCellClick () {
-    if (onCellClick) onCellClick(rowNum, key)
+  const _onChange = (e) => {
+    // console.log(rowNum, key, e.target.value, 'change')
+    onChange(rowNum, key, e.target.value)
   }
+
   const _onMouseEnter = () => {
     setEditMode(true)
-    // console.log('mouse enter', rowNum, key)
   }
+
   const _onMouseLeave = () => {
     setEditMode(false)
-    // console.log('mouse leave', rowNum, key)
   }
+
   return (
     <td
       key={key}
-      onClick={_onCellClick}
       onMouseEnter={_onMouseEnter}
       onMouseLeave={_onMouseLeave}
     >
-      {_showData(data, editMode)}
+      {_showData(data, editMode, _onChange)}
     </td>
   )
 }
 
-const _showRow = (item, rowNum, onCellClick) => {
+const _showRow = (item, rowNum, onCellChange) => {
   return ObjectMap(item, (cell, key) => {
-    return _showCell(rowNum, key, cell, onCellClick)
+    return _showCell(rowNum, key, cell, onCellChange)
   })
 }
 
-const _showRows = (list, onCellClick) => {
+const _showRows = (list, onCellChange) => {
   return list.map((item, index) => (
     <tr key={index}>
-      {_showRow(item, index, onCellClick)}
+      {_showRow(item, index, onCellChange)}
     </tr>
   ))
 }
 
-const MyTablePlace = ({ list, columns, onCellClick }) => (
+const MyTablePlace = ({ list, columns, onCellChange }) => (
   <table>
     <thead>
       <tr>
@@ -66,7 +64,7 @@ const MyTablePlace = ({ list, columns, onCellClick }) => (
       </tr>
     </thead>
     <tbody>
-      {_showRows(list, onCellClick)}
+      {_showRows(list, onCellChange)}
     </tbody>
   </table>
 )
