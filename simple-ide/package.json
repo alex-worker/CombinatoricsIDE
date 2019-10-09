@@ -12,11 +12,11 @@
     "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.2.1",
-    "@storybook/addon-links": "^5.2.1",
-    "@storybook/addons": "^5.2.1",
-    "@storybook/cli": "^5.2.1",
-    "@storybook/react": "^5.2.1",
+    "@storybook/addon-actions": "^5.2.3",
+    "@storybook/addon-links": "^5.2.3",
+    "@storybook/addons": "^5.2.3",
+    "@storybook/cli": "^5.2.3",
+    "@storybook/react": "^5.2.3",
     "faker": "^4.1.0",
     "react-scripts": "^3.2.0",
     "standard": "^14.3.1"
