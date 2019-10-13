@@ -17,6 +17,11 @@ for (let index = 0; index < 100; index++) {
   list.push(fakeData)
 }
 
+const columns = [
+  { key: 'name', label: 'Name', width: 150 },
+  { key: 'description', label: 'Description', width: (width) => { return width - 100 } }
+]
+
 storiesOf('GUI', module)
   .add('Sidenav', () =>
     <Sidenav>
@@ -35,7 +40,7 @@ storiesOf('GUI', module)
   .add('Table', () =>
     <div style={{ height: '100vh', border: '1px black solid' }}>
       <Table
-        list={list}
+        list={list} columns={columns}
       />
     </div>
   )
