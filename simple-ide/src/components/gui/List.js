@@ -1,7 +1,8 @@
+import { useWindowSize } from './useWindowResize'
 import React, { useEffect } from 'react'
 
 import { VariableSizeList } from 'react-window'
-import AutoSizer from 'react-virtualized-auto-sizer'
+// import AutoSizer from 'react-virtualized-auto-sizer'
 import getHeight from './getheight'
 import './gui.css'
 
@@ -32,7 +33,14 @@ const calcHash = (width, list) => {
 }
 
 const List = ({ list }) => {
-  return <div className='list-place'><AutoSizer>
+  const [width, height] = useWindowSize()
+  return (
+    <div className='list-place'>
+      {width}x{height}
+    </div>
+  )
+
+  /* <AutoSizer>
     {({ height, width }) => {
       calcHash(width, list)
       return <VariableSizeList
@@ -50,7 +58,7 @@ const List = ({ list }) => {
         )}
       </VariableSizeList>
     }}
-  </AutoSizer></div>
+  </AutoSizer></div> */
 }
 
 export default List
