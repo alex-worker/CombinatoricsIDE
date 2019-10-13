@@ -1,42 +1,65 @@
 import { useWindowSize } from './useWindowResize'
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import { VariableSizeList } from 'react-window'
-// import AutoSizer from 'react-virtualized-auto-sizer'
-import getHeight from './getheight'
-import './gui.css'
+import { VariableSizeList as List } from 'react-window'
 
-var calculatedHash = []
+// import getHeight from './getheight'
+// import './gui.css'
 
-const Row = ({ row }) => {
-  return <div className='list-item'>
-    { row.description }
-  </div>
+// var calculatedHash = []
+
+// const Row = ({ row }) => {
+//   return <div className='list-item'>
+//     { row.description }
+//   </div>
+// }
+
+// const getItemHeight = (width, text) => {
+//   const height = getHeight({
+//     text,
+//     attributes: {
+//       width: width + 'px'
+//     },
+//     className: 'list-item'
+//   })
+//   return height
+// }
+
+// const calcHash = (width, list) => {
+//   console.log('calc...')
+//   calculatedHash = list.map(item => {
+//     return getItemHeight(width, item.description)
+//   })
+// }
+
+const _getItemSize = (index) => {
+  return 50
 }
 
-const getItemHeight = (width, text) => {
-  const height = getHeight({
-    text,
-    attributes: {
-      width: width + 'px'
-    },
-    className: 'list-item'
-  })
-  return height
+const Row = ({ index, data }) => {
+  return (
+    <div>
+      {index}: {data.name} {data.description}
+    </div>
+  )
 }
 
-const calcHash = (width, list) => {
-  console.log('calc...')
-  calculatedHash = list.map(item => {
-    return getItemHeight(width, item.description)
-  })
-}
-
-const List = ({ list }) => {
+const MyList = ({ list }) => {
   const [width, height] = useWindowSize()
   return (
     <div className='list-place'>
-      {width}x{height}
+      <List
+        height={height}
+        width={width}
+        itemSize={_getItemSize}
+        itemCount={list.length}
+      >
+        {({ index, style }) => (
+          <div style={style}>
+            <Row index={index} data={list[index]} />
+          </div>
+        )}
+      </List>
     </div>
   )
 
@@ -61,4 +84,4 @@ const List = ({ list }) => {
   </AutoSizer></div> */
 }
 
-export default List
+export default MyList
