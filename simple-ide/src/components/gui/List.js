@@ -3,42 +3,20 @@ import React from 'react'
 
 import { VariableSizeList as List } from 'react-window'
 
-// import getHeight from './getheight'
-// import './gui.css'
-
-// var calculatedHash = []
-
-// const Row = ({ row }) => {
-//   return <div className='list-item'>
-//     { row.description }
-//   </div>
-// }
-
-// const getItemHeight = (width, text) => {
-//   const height = getHeight({
-//     text,
-//     attributes: {
-//       width: width + 'px'
-//     },
-//     className: 'list-item'
-//   })
-//   return height
-// }
-
-// const calcHash = (width, list) => {
-//   console.log('calc...')
-//   calculatedHash = list.map(item => {
-//     return getItemHeight(width, item.description)
-//   })
-// }
+import './gui.css'
 
 const _getItemSize = (index) => {
   return 50
 }
 
 const Row = ({ index, data }) => {
+  const root = React.useRef()
+  React.useEffect(() => {
+    // setSize(index, root.current.getBoundingClientRect().height)
+  }, [windowWidth])
+
   return (
-    <div>
+    <div ref={root} className='list-item'>
       {index}: {data.name} {data.description}
     </div>
   )
@@ -62,26 +40,6 @@ const MyList = ({ list }) => {
       </List>
     </div>
   )
-
-  /* <AutoSizer>
-    {({ height, width }) => {
-      calcHash(width, list)
-      return <VariableSizeList
-        height={height}
-        width={width}
-        itemCount={list.length}
-        // itemSize={index => getItemHeight(width, list[index].description)}
-        itemSize={index => calculatedHash[index]}
-        estimatedItemSize={10}
-      >
-        {({ index, style }) => (
-          <div style={style}>
-            <Row row={list[index]} />
-          </div>
-        )}
-      </VariableSizeList>
-    }}
-  </AutoSizer></div> */
 }
 
 export default MyList

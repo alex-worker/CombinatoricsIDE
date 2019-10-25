@@ -6,18 +6,19 @@
   height: 100vh; /* force the BODY element to match the height of the HTML element 
 } */
 
-.App {
-  /* height: 100vh; */
-  /* text-align: center; */
-}
+/* .App {
+   height: 100vh; 
+   text-align: center; 
+} */
 
 .color-dark {
   background-color: blue;
 }
 
-.height-max {
-  /* height: 100vh; */
-}
+/* .height-max {
+  height: 100vh;
+} */
+
 /* .sidenav {
   width: 100px;
 } */
