@@ -5,15 +5,21 @@ import { VariableSizeList as List } from 'react-window'
 
 import './gui.css'
 
-const _getItemSize = (index) => {
-  return 50
-}
+let sizeMap = []
 
-const Row = ({ index, data }) => {
+const Row = ({ width, index, data }) => {
   const root = React.useRef()
+
+  const setSize = React.useCallback((index, size) => {
+    console.log(index, size)
+    sizeMap = { ...sizeMap, [index]: size }
+  }, [])
+
   React.useEffect(() => {
-    // setSize(index, root.current.getBoundingClientRect().height)
-  }, [windowWidth])
+    const height = root.current.getBoundingClientRect().height
+    setSize(index, height)
+    // console.log(height)
+  }, [width])
 
   return (
     <div ref={root} className='list-item'>
@@ -24,17 +30,18 @@ const Row = ({ index, data }) => {
 
 const MyList = ({ list }) => {
   const [width, height] = useWindowSize()
+  const getSize = React.useCallback(index => sizeMap[index] || 50, [])
   return (
     <div className='list-place'>
       <List
         height={height}
         width={width}
-        itemSize={_getItemSize}
+        itemSize={getSize}
         itemCount={list.length}
       >
         {({ index, style }) => (
           <div style={style}>
-            <Row index={index} data={list[index]} />
+            <Row width={width} index={index} data={list[index]} />
           </div>
         )}
       </List>
