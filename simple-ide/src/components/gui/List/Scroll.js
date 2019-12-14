@@ -4,16 +4,16 @@ import Row from './Row'
 
 export const ScrollContext = React.createContext({})
 
-const ScrollArea = ({ width, height, list, listRef }) => {
+const ScrollArea = ({ width, height, list }) => {
+  const listRef = React.createRef()
   const sizeMap = React.useRef({})
   const setSize = React.useCallback((index, size) => {
     sizeMap.current = { ...sizeMap.current, [index]: size }
     listRef.current.resetAfterIndex(0)
-    console.log(index, size)
-  }, [])
+  }, [listRef])
   const getSize = React.useCallback(index => sizeMap.current[index] || 50, [])
   return (
-    <ScrollContext.Provider value={{ setSize, width }}>
+    <ScrollContext.Provider value={{ setSize }}>
       <List
         height={height}
         width={width}

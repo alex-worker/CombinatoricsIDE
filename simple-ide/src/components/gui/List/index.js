@@ -46,9 +46,6 @@ import Scroll from './Scroll'
 //   )
 // }
 
-export const listRef = React.createRef()
-export const chatHistoryRef = React.createRef()
-
 const MyList = ({ list }) => {
   const [width, height] = useWindowSize()
   return (
@@ -57,7 +54,6 @@ const MyList = ({ list }) => {
         width={width}
         height={height}
         list={list}
-        listRef={listRef}
       />
     </div>
   )
