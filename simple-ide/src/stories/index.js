@@ -2,7 +2,7 @@ import React from 'react'
 import faker from 'faker'
 
 import Sidenav from '../components/gui/Sidenav'
-import List from '../components/gui/List'
+import List from '../components/gui/List/index'
 
 import { storiesOf } from '@storybook/react'
 
