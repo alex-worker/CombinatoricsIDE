@@ -17,7 +17,12 @@ const onClickRow = (index) => {
 
 const showRow = (index, data) => {
   return (
-    <div onClick={() => onClickRow(index)}><b>{data.name}</b> ({data.default}) {data.description}</div>
+    <tr onClick={() => onClickRow(index)}>
+      <td>[{index}]</td>
+      <td><b>{data.name}</b></td>
+      <td>({data.default})</td>
+      <td>{data.description}</td>
+    </tr>
   )
 }
 

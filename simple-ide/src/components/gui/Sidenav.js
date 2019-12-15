@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import M from 'materialize-css'
 import idgen from './idgen'
 import 'materialize-css/dist/css/materialize.min.css'
@@ -11,14 +11,16 @@ const Sidenav = (props) => {
     M.Sidenav.init(ref.current)
   }, [])
 
-  return <Fragment>
-    <ul id={id} ref={ref} className='sidenav'>
-      {props.children}
-    </ul>
-    <a data-target={id} className='sidenav-trigger show-on-large' href='#nav'>
-      <i className='material-icons'>menu</i>
-    </a>
-  </Fragment>
+  return (
+    <>
+      <ul id={id} ref={ref} className='sidenav'>
+        {props.children}
+      </ul>
+      <a data-target={id} className='sidenav-trigger show-on-large' href='#nav'>
+        <i className='material-icons'>menu</i>
+      </a>
+    </>
+  )
 }
 
 export default Sidenav

@@ -1,5 +1,6 @@
 import { useWindowSize } from '../useWindowResize'
 import React from 'react'
+import 'materialize-css/dist/css/materialize.min.css'
 
 import './gui.css'
 
