@@ -11,9 +11,13 @@ const vars = [
   { name: 'game_over', default: '0', description: 'Тип окончания игры, 0 - игра еще не окончена.' }
 ]
 
+const onClickRow = (index) => {
+  console.log(index)
+}
+
 const showRow = (index, data) => {
   return (
-    <div><b>{data.name}</b> ({data.default}) {data.description}</div>
+    <div onClick={() => onClickRow(index)}><b>{data.name}</b> ({data.default}) {data.description}</div>
   )
 }
 

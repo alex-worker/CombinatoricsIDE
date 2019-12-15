@@ -10,7 +10,6 @@ const Row = ({ width, rowFunc, index, data }) => {
     const height = root.current.getBoundingClientRect().height
     setSize(index, height)
   }, [index, setSize])
-  console.log(index)
   return (
     <div ref={root} className='list-item'>
       {rowFunc(index, data)}
