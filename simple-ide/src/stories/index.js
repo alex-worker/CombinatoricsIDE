@@ -16,6 +16,14 @@ for (let index = 0; index < 1000; index++) {
   list.push(fakeData)
 }
 
+const showListRow = (index, data) => {
+  return (
+    <div>
+      {index}: {data.name} {data.description}
+    </div>
+  )
+}
+
 storiesOf('GUI', module)
   .add('Sidenav', () =>
     <Sidenav>
@@ -25,5 +33,5 @@ storiesOf('GUI', module)
     </Sidenav>
   )
   .add('List', () =>
-    <List list={list} />
+    <List list={list} rowFunc={showListRow} />
   )

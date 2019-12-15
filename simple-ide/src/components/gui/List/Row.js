@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ScrollContext } from './Scroll'
 
-const Row = ({ width, index, data }) => {
+const Row = ({ width, rowFunc, index, data }) => {
   const root = React.useRef()
   const { setSize } = React.useContext(ScrollContext)
 
@@ -10,10 +10,10 @@ const Row = ({ width, index, data }) => {
     const height = root.current.getBoundingClientRect().height
     setSize(index, height)
   }, [index, setSize])
-
+  console.log(index)
   return (
     <div ref={root} className='list-item'>
-      {index}: {data.name} {data.description}
+      {rowFunc(index, data)}
     </div>
   )
 }

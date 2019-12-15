@@ -5,7 +5,7 @@ import './gui.css'
 
 import Scroll from './Scroll'
 
-const MyList = ({ list }) => {
+const MyList = ({ list, rowFunc }) => {
   const [width, height] = useWindowSize()
   return (
     <div className='list-place'>
@@ -13,6 +13,7 @@ const MyList = ({ list }) => {
         width={width}
         height={height}
         list={list}
+        rowFunc={rowFunc}
       />
     </div>
   )

@@ -4,7 +4,7 @@ import Row from './Row'
 
 export const ScrollContext = React.createContext({})
 
-const ScrollArea = ({ width, height, list }) => {
+const ScrollArea = ({ width, height, list, rowFunc }) => {
   const listRef = React.createRef()
   const sizeMap = React.useRef({})
   const setSize = React.useCallback((index, size) => {
@@ -23,7 +23,7 @@ const ScrollArea = ({ width, height, list }) => {
       >
         {({ index, style }) => (
           <div style={style}>
-            <Row width={width} index={index} data={list[index]} />
+            <Row width={width} rowFunc={rowFunc} index={index} data={list[index]} />
           </div>
         )}
       </List>
