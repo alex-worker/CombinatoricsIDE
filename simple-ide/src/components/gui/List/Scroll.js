@@ -14,19 +14,23 @@ const ScrollArea = ({ width, height, list, rowFunc }) => {
   const getSize = React.useCallback(index => sizeMap.current[index] || 50, [])
   return (
     <ScrollContext.Provider value={{ setSize }}>
-      <List
-        height={height}
-        width={width}
-        itemCount={list.length}
-        itemSize={getSize}
-        ref={listRef}
-      >
-        {({ index, style }) => (
-          <div style={style}>
-            <Row width={width} rowFunc={rowFunc} index={index} data={list[index]} />
-          </div>
-        )}
-      </List>
+      <ul className='collection'>
+        <List
+          height={height}
+          width={width}
+          itemCount={list.length}
+          itemSize={getSize}
+          ref={listRef}
+        >
+          {({ index, style }) => (
+            <li className='collection-item'>
+              <div style={style}>
+                <Row width={width} rowFunc={rowFunc} index={index} data={list[index]} />
+              </div>
+            </li>
+          )}
+        </List>
+      </ul>
     </ScrollContext.Provider>
   )
 }

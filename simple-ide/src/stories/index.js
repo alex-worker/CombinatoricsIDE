@@ -3,6 +3,7 @@ import faker from 'faker'
 
 import Sidenav from '../components/gui/Sidenav'
 import List from '../components/gui/List/index'
+import EditGrid from '../components/gui/EditGrid'
 
 import { storiesOf } from '@storybook/react'
 
@@ -34,4 +35,7 @@ storiesOf('GUI', module)
   )
   .add('List', () =>
     <List list={list} rowFunc={showListRow} />
+  )
+  .add('EditGrid', () =>
+    <EditGrid name='EditGrid' list={list} rowFunc={showListRow} />
   )

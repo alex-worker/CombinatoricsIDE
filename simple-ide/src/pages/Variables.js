@@ -1,6 +1,6 @@
 import React from 'react'
 
-import List from '../components/gui/List'
+import EditGrid from '../components/gui/EditGrid'
 
 const vars = [
   { name: 'var_act', default: '0', description: 'Текущее действие' },
@@ -17,22 +17,18 @@ const onClickRow = (index) => {
 
 const showRow = (index, data) => {
   return (
-    <tr onClick={() => onClickRow(index)}>
-      <td>[{index}]</td>
-      <td><b>{data.name}</b></td>
-      <td>({data.default})</td>
-      <td>{data.description}</td>
-    </tr>
+    <div onClick={() => onClickRow(index)} index={index}>
+      [{index}]
+      <a className='btn-floating red' href='.'><i className='material-icons left'>clear</i></a>
+      <b>{data.name.toUpperCase()}</b>
+      ({data.default})
+      {data.description}
+    </div>
   )
 }
 
 const Variables = () => {
-  return (
-    <div>
-      <h3>'Variables'</h3>
-      <List list={vars} rowFunc={showRow} />
-    </div>
-  )
+  return <EditGrid name='Variables' list={vars} rowFunc={showRow} />
 }
 
 export default Variables
