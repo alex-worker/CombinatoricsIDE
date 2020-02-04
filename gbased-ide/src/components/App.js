@@ -1,10 +1,13 @@
 import React from 'react'
-import '../src/styles/App.css'
+
+import AppToolbar from '../containers/AppToolbar'
+
+import '../styles/App.css'
 
 function App () {
   return (
     <div className='App'>
-      lol
+      <AppToolbar />
     </div>
   )
 }

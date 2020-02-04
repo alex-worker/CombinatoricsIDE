@@ -1,11 +1,11 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 /* eslint-disable no-console */
-import electron from "electron";
-import glob from "glob";
-import Path from "path";
-import settings from "electron-settings";
-import en from "../../lang/en";
+// import electron from "electron";
+// import glob from "glob";
+// import Path from "path";
+// import settings from "electron-settings";
+// import en from "../../lang/en";
 
 export const locales = glob
   .sync(`${__dirname}/../../lang/*.json`)
