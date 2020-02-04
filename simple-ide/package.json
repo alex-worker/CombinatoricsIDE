@@ -10,11 +10,11 @@
     "react-window": "^1.8.5"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.3.9",
-    "@storybook/addon-links": "^5.3.9",
-    "@storybook/addons": "^5.3.9",
-    "@storybook/cli": "^5.3.9",
-    "@storybook/react": "^5.3.9",
+    "@storybook/addon-actions": "^5.3.10",
+    "@storybook/addon-links": "^5.3.10",
+    "@storybook/addons": "^5.3.10",
+    "@storybook/cli": "^5.3.10",
+    "@storybook/react": "^5.3.10",
     "faker": "^4.1.0",
     "react-scripts": "^3.3.1",
     "standard": "^14.3.1"
