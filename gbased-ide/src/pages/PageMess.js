@@ -6,7 +6,7 @@ const PageMess = () => {
   return (
     <div style={{ width: '100%', flexDirection: 'column', overflow: 'auto' }}>
       <PageHeader>
-        <h1>{l10n('DIALOGUE_REVIEW')}</h1>
+        <h1>{l10n('PAGE_HEADER_MESS')}</h1>
       </PageHeader>
     </div>
   )
