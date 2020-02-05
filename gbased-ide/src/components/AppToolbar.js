@@ -5,9 +5,9 @@ import {
   Toolbar,
   ToolbarTitle,
   ToolbarDropdownButton
-} from '../components/library/Toolbar'
+} from './library/Toolbar'
 
-import { MenuItem } from '../components/library/Menu'
+import { MenuItem } from './library/Menu'
 
 // const l10n = (str) => {
 //   return str
