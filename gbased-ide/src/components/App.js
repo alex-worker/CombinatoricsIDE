@@ -34,11 +34,11 @@ function App () {
     <div className='App'>
       <AppToolbar sectionNames={sectionNames} curSection={section} onSectionChange={onSectionChange} />
       <div className='App__Content'>
-        {section === 'vars'   &&  <PageVars />}
-        {section === 'cells'  &&  <PageCells />}
-        {section === 'items'  &&  <PageItems />}
-        {section === 'mess'   &&  <PageMess />}
-        {section === 'about'  &&  <PageAbout />}
+        {section === 'vars' && <PageVars />}
+        {section === 'cells' && <PageCells />}
+        {section === 'items' && <PageItems />}
+        {section === 'mess' && <PageMess />}
+        {section === 'about' && <PageAbout />}
       </div>
     </div>
   )
